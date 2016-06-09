@@ -48,7 +48,7 @@ const ResultViewAndroid = (props, x, y, z) => {
         indicatorStyle={'white'} >
         <ListView
           enableEmptySections={true}
-          dataSource={ds.cloneWithRows(results.data)}
+          dataSource={ds.cloneWithRows(props.overview.content)}
           renderRow={renderer}
         />
       </ScrollView>
