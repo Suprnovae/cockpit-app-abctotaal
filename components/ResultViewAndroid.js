@@ -11,7 +11,7 @@ import CustomToolbarAndroid from './CustomToolbarAndroid';
 import results from '../data/results';
 import SemiGaugeView from './SemiGaugeView';
 import styles from '../styles/Gauge';
-import LoginANDROID from './LoginANDROID';
+import LoginViewAndroid from './LoginViewAndroid';
 
 // FIX: How do we get access to a store inside the components?
 // Shouldn't use of Provider expose the store to all the components contained

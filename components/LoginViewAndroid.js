@@ -108,7 +108,7 @@ const styles = StyleSheet.create({
   }
 });
 
-export default class LoginANDROID extends React.Component {
+export default class LoginViewAndroid extends React.Component {
   constructor(props) {
     super(props);
     this.state = { isSignup: false };

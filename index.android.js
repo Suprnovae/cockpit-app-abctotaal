@@ -22,7 +22,7 @@ import ResultViewAndroid from './components/ResultViewAndroid';
 import styles, { colors } from './styles/Initial';
 import MockData from './data/records';
 
-import LoginANDROID from './components/LoginANDROID';
+import LoginViewAndroid from './components/LoginViewAndroid';
 
 const actions = [
   {title: 'Settings', icon: require('image!app_logo'), show: 'always'},
@@ -103,7 +103,7 @@ class WinAdmCockpit extends Component {
       );
     case 'login':
       return (
-        <LoginANDROID
+        <LoginViewAndroid
           navigator={navigator}
           route={route} {...this.props} />
       );
