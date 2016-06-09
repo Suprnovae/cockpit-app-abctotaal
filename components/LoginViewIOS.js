@@ -2,7 +2,6 @@ import React, {
   Image,
   PropTypes,
   ScrollView,
-  StyleSheet,
   Text,
   TextInput,
   TouchableOpacity,
@@ -15,9 +14,7 @@ import { authenticate } from '.././actions';
 import { connect } from 'react-redux';
 import Button from './Button';
 
-const LoginViewIOS = (props) => {
-  return(container(props));
-};
+const LoginViewIOS = (props) => container(props);
 
 LoginViewIOS.propTypes = {
   handle: PropTypes.string,
@@ -43,15 +40,17 @@ let mapDispatchToProps = function(dispatch) {
 
 export default connect(mapStateToProps, mapDispatchToProps)(LoginViewIOS);
 
-const footerText = (props) => props.isSignup ? (
-  <Text style={styles.footerText}>
-    Already signed up? <Text style={styles.footerActionText}>Login.</Text>
-  </Text>
-) : (
-  <Text style={styles.footerText}>
-    Don t have an account? <Text style={styles.footerActionText}>Sign Up.</Text>
-  </Text>
-);
+const footerText = (props) => {
+  if(props.isSignup) {
+    return <Text style={styles.footerText}>
+      Already signed up? <Text style={styles.footerActionText}>Login.</Text>
+    </Text>;
+  } else {
+    return <Text style={styles.footerText}>
+      Don t have an account? <Text style={styles.footerActionText}>Sign Up.</Text>
+    </Text>;
+  }
+}
 
 const passwordConfirmationField = (props) => {
   if(props.isSignup) {
@@ -104,7 +103,7 @@ const form = (props) =>
         returnKeyType={props.isSignup ? "next" : "go"}
       />
     </View>
-    {passwordConfirmationField}
+    {passwordConfirmationField(props)}
     <View style={styles.loginButtonContainer}>
       <Button
         onPress={ () => {
@@ -134,18 +133,20 @@ const container = (props, something, another, blah) => {
 //    {footerText(props)}
 //  </TouchableOpacity>;
 
-  return <View style={styles.container}>
-    <ScrollView
-      keyboardShouldPersistTaps={false}
-      automaticallyAdjustContentInsets={true}
-      alwaysBounceVertical={false}
-      style={styles.scrollView}>
-      <View style={styles.innerContainer}>
-        {null}
-        {form(props)}
-      </View>
-      <View style={styles.horizontalLine} />
-      {footer}
-    </ScrollView>
-  </View>;
-}
+  return (
+    <View style={styles.container}>
+      <ScrollView
+        keyboardShouldPersistTaps={false}
+        automaticallyAdjustContentInsets={true}
+        alwaysBounceVertical={false}
+        style={styles.scrollView}>
+        <View style={styles.innerContainer}>
+          {null}
+          {form(props)}
+        </View>
+        <View style={styles.horizontalLine} />
+        {footer}
+      </ScrollView>
+    </View>
+  );
+};
