@@ -15,11 +15,11 @@ import { authenticate } from '.././actions';
 import { connect } from 'react-redux';
 import Button from './Button';
 
-const LoginIOS = (props) => {
+const LoginViewIOS = (props) => {
   return(container(props));
 };
 
-LoginIOS.propTypes = {
+LoginViewIOS.propTypes = {
   handle: PropTypes.string,
   secret: PropTypes.string,
   authenticate: PropTypes.func.isRequired,
@@ -41,7 +41,7 @@ let mapDispatchToProps = function(dispatch) {
   }
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(LoginIOS);
+export default connect(mapStateToProps, mapDispatchToProps)(LoginViewIOS);
 
 const footerText = (props) => props.isSignup ? (
   <Text style={styles.footerText}>

@@ -28,7 +28,7 @@ import DatabaseManager from './components/DatabaseManager';
 import styles, { colors } from './styles/Initial';
 import MockData from './data/records';
 
-import LoginIOS from './components/LoginIOS';
+import LoginViewIOS from './components/LoginViewIOS';
 
 const initialState = {
   auth: {},
@@ -78,7 +78,7 @@ class WinAdmCockpit extends Component {
 
     this.refs.nav.navigator.push({
       title: "Login",//"New Record", // "Camera",
-      component: LoginIOS,//RecordFormViewIOS, //CameraViewIOS,
+      component: LoginViewIOS,//RecordFormViewIOS, //CameraViewIOS,
       /*
       rightButtonTitle: 'Cancel',
       onRightButtonPress: () => {
