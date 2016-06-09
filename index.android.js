@@ -30,8 +30,9 @@ const actions = [
 ];
 
 import { Provider } from 'react-redux';
-import { createStore } from 'redux';
-import { addRecord } from './actions';
+import { createStore, applyMiddleware } from 'redux';
+import thunk from 'redux-thunk';
+import { addRecord, getReport } from './actions';
 import basicApp from './reducers';
 
 // TODO: refactor to central file for both iOS and Android
@@ -43,7 +44,11 @@ const initialState = {
   },
 };
 
-const store = createStore(basicApp, initialState);
+const store = createStore(basicApp, initialState, applyMiddleware(thunk));
+let unsubscribe = store.subscribe(() => {
+  console.log("state changed to", store.getState());
+});
+store.dispatch(getReport());
 
 class WinAdmCockpit extends Component {
   constructor(props) {

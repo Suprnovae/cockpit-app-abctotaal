@@ -1,17 +1,18 @@
 import React, {
   BackAndroid,
-  Component,
   ListView,
   ScrollView,
-  Navigator,
   View,
 } from 'react-native';
 
-import CustomToolbarAndroid from './CustomToolbarAndroid';
-import results from '../data/results';
-import SemiGaugeView from './SemiGaugeView';
+import { connect } from 'react-redux';
+
 import styles from '../styles/Gauge';
+import results from '../data/results';
+
+import CustomToolbarAndroid from './CustomToolbarAndroid';
 import LoginViewAndroid from './LoginViewAndroid';
+import SemiGaugeView from './SemiGaugeView';
 
 // FIX: How do we get access to a store inside the components?
 // Shouldn't use of Provider expose the store to all the components contained
@@ -55,4 +56,11 @@ const ResultViewAndroid = (props, x, y, z) => {
   );
 };
 
-export default ResultViewAndroid;
+let mapStateToProps = function(state) {
+  console.log('state', state);
+  return {
+    overview: state.overview,
+  };
+};
+
+export default connect(mapStateToProps)(ResultViewAndroid);

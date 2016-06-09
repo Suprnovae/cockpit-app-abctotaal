@@ -2,14 +2,13 @@ import React, {
   Component,
   ListView,
   ScrollView,
-  Text,
-  PropTypes,
 } from 'react-native';
 
 import { connect } from 'react-redux';
 
 import styles from '../styles/Gauge';
 import results from '../data/results';
+
 import SemiGaugeView from './SemiGaugeView';
 
 // FIX: How do we get access to a store inside the components?
@@ -41,7 +40,7 @@ let mapStateToProps = function(state) {
   console.log('state', state);
   return {
     overview: state.overview
-  }
-}
+  };
+};
 
 export default connect(mapStateToProps)(ResultViewIOS);
