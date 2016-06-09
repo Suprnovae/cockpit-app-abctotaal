@@ -23,6 +23,7 @@ export default class CustomToolbarAndroid extends Component {
           style={styles.toolbar}
           icon={require('image!toolbar_icon')}
           navIcon={require('image!toolbar_icon')}
+          onActionSelected={this.props.onActionSelected}
           actions={this.props.actions} />
 
     );

@@ -19,7 +19,7 @@ import CameraViewAndroid from './components/CameraViewAndroid';
 import LedgerViewAndroid from './components/LedgerViewAndroid';
 import RecordFormViewAndroid from './components/RecordFormViewAndroid';
 import ResultViewAndroid from './components/ResultViewAndroid';
-import styles from './styles/Initial';
+import styles, { colors } from './styles/Initial';
 import MockData from './data/records';
 
 import LoginANDROID from './components/LoginANDROID';
@@ -38,6 +38,9 @@ import basicApp from './reducers';
 const initialState = {
   auth: {},
   records: [],
+  overview: {
+    content: [],
+  },
 };
 
 const store = createStore(basicApp, initialState);
@@ -48,9 +51,6 @@ class WinAdmCockpit extends Component {
     const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
     this.state = {
       dataSource: ds.cloneWithRows(MockData.records),
-      colorProps: {
-        titleColor: 'red'
-      }
     };
   }
 

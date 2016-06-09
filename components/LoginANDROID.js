@@ -9,6 +9,8 @@ import React, {
   View
 } from 'react-native';
 
+import CustomToolbarAndroid from './CustomToolbarAndroid';
+
 import Button from './Button';
 
 const windowWidth = Dimensions.get("window").width;
@@ -132,24 +134,26 @@ export default class LoginANDROID extends React.Component {
     );
 
     return (
-      <View style={styles.container}>
-        <ScrollView
-          ref="scrollView"
-          keyboardShouldPersistTaps={false}
-          automaticallyAdjustContentInsets={true}
-          alwaysBounceVertical={false}
-          style={styles.scrollView}
-        >
-          <View style={styles.innerContainer}>
-            <Image source={require('image!toolbar_icon')} style={styles.tpLogo} />
-            <Text style={styles.socialText}>Boekingen</Text>
-            {this.renderForm()}
-          </View>
-          <View style={styles.horizontalLine} />
-          <TouchableOpacity style={styles.footer} activeOpacity={0.8} onPress={() => this.changeSignup()}>
-            {footerText}
-          </TouchableOpacity>
-        </ScrollView>
+      <View style={{flex: 1}}>
+        <CustomToolbarAndroid
+          style={styles.toolbar}
+          icon={require('image!toolbar_icon')}
+          navIcon={require('image!toolbar_icon')}
+          title='Login'
+          actions={[]}/>
+        <View style={styles.container}>
+          <ScrollView
+            ref="scrollView"
+            keyboardShouldPersistTaps={false}
+            automaticallyAdjustContentInsets={true}
+            alwaysBounceVertical={false}
+            style={styles.scrollView} >
+            <View style={styles.innerContainer}>
+              {this.renderForm()}
+            </View>
+            <View style={styles.horizontalLine} />
+          </ScrollView>
+        </View>
       </View>
     );
   }

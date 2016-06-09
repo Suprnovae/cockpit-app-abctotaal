@@ -93,7 +93,7 @@ export default StyleSheet.create({
   },
   toolbar: {
     height: 56,
-    backgroundColor: 'rgba(100, 0, 0, 100)', //74, 144, 226, 100)', //'#2196F3',
+    backgroundColor: 'rgba(74, 144, 226, 100)', //'#2196F3',
     flex: 0,
   },
   list:{
