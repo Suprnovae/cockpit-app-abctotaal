@@ -29,6 +29,7 @@ project.xcworkspace
 local.properties
 android/*.iml
 android/app/*.iml
+android/release.properties
 
 # node.js
 #

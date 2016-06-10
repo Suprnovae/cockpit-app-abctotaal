@@ -99,10 +99,14 @@ android {
             include "armeabi-v7a", "x86"
         }
     }
+    signingConfigs {
+      release
+    }
     buildTypes {
         release {
             minifyEnabled enableProguardInReleaseBuilds
             proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
+            signingConfig signingConfigs.release
         }
     }
     // applicationVariants are e.g. debug, release
@@ -137,3 +141,10 @@ task copyDownloadableDepsToLibs(type: Copy) {
   from configurations.compile
   into 'libs'
 }
+
+def props = new Properties()
+props.load(new FileInputStream(rootProject.file("release.properties")))
+android.signingConfigs.release.storeFile = rootProject.file(props.keyStore)
+android.signingConfigs.release.storePassword = props.keyStorePassword
+android.signingConfigs.release.keyAlias = props.keyAlias
+android.signingConfigs.release.keyPassword = props.keyAliasPassword
