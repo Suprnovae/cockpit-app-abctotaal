@@ -5,7 +5,8 @@ import React, {
   Text,
   TextInput,
   TouchableOpacity,
-  View
+  View,
+  Alert
 } from 'react-native';
 
 import styles from '../styles/LoginForm';
@@ -15,6 +16,7 @@ import { connect } from 'react-redux';
 import Button from './Button';
 
 const LoginViewIOS = (props) => container(props);
+var alertMessage = "Check your credentials";
 
 LoginViewIOS.propTypes = {
   handle: PropTypes.string,
@@ -112,9 +114,12 @@ const form = (props) =>
             console.log("making something happen", this.email);
           };
           let fail = () => {
-            console.log('shit');
+            Alert.alert(
+            'Alert',
+            alertMessage,
+          )
           };
-          props.authenticate(this.email, this.password, pass, fail);
+         props.authenticate(this.email, this.password, pass, fail);
         } }
         textStyle={{fontSize: 14}}
         style={styles.loginButton} >
