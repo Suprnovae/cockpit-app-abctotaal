@@ -10,7 +10,7 @@ import SemiGaugeView from './SemiGaugeView';
 
 const ResultViewIOS = (props, x, y, z) => {
   let ds = new ListView.DataSource({rowHasChanged: (a, b) => a !== b});
-  console.log('props', props);
+  //console.log('props', props);
 
   const renderer = (data, _) => <SemiGaugeView result={data} />
 

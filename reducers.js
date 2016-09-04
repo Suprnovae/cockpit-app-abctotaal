@@ -19,13 +19,22 @@ function records(state = [], action) {
 function overview(state = {}, action) {
   switch(action.type) {
     case UPDATE_REPORT:
-      console.log('received update for report', action.content);
+      if(!action.report) {
+        return {
+          stamp: null,
+          content: [],
+          comment: null,
+          organization: null,
+          shortname: null,
+        }
+      }
+
       return {
-        stamp: action.report ? action.report.updatedAt : Date.now(),
-        content: action.report ? action.report.data : [],
-        comment: action.report ? action.report.comment : null,
-        organization: action.report ? action.report.organization.name : null,
-        shortname: action.report ? action.report.organization.shortname : null,
+        stamp: action.report.updatedAt,
+        content: action.report.data,
+        comment: action.report.comment,
+        organization: action.report.organization.name,
+        shortname: action.report.organization.shortname,
       };
     case CLEAR_REPORT:
       return {

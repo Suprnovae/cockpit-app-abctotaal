@@ -16,7 +16,8 @@ import { connect } from 'react-redux';
 import Button from './Button';
 
 const LoginViewIOS = (props) => container(props);
-var alertMessage = "Check your credentials";
+var alertMessage = "Controleer de verbinding of uw gebruikersnaam en wachtwoord en probeer het nogmaals";
+var alertTitle = "Inloggen mislukt"
 
 LoginViewIOS.propTypes = {
   handle: PropTypes.string,
@@ -34,9 +35,7 @@ let mapStateToProps = function(state) {
 
 let mapDispatchToProps = function(dispatch) {
   return {
-    authenticate: (h, s, success, failure) => {
-      return dispatch(authenticate(h, s, success, failure));
-    },
+    authenticate: (h, s, success, failure) => dispatch(authenticate(h, s))
   }
 };
 
@@ -109,17 +108,15 @@ const form = (props) =>
     <View style={styles.loginButtonContainer}>
       <Button
         onPress={ () => {
-          let pass = () => {
+          let pass = _ => {
+            console.log('making something happen', this.email);
             props.navigator.pop();
-            console.log("making something happen", this.email);
           };
-          let fail = () => {
-            Alert.alert(
-            'Alert',
-            alertMessage,
-          )
+          let fail = _ => {
+            console.log('not making something happen');
+            Alert.alert(alertTitle, alertMessage)
           };
-         props.authenticate(this.email, this.password, pass, fail);
+          props.authenticate(this.email, this.password).then(pass, fail)
         } }
         textStyle={{fontSize: 14}}
         style={styles.loginButton} >
