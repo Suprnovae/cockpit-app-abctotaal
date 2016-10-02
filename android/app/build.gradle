@@ -100,7 +100,12 @@ android {
         }
     }
     signingConfigs {
-      release
+      release {
+        storeFile System.getenv('ANDROID_KEYSTORE_PATH') // rootProject.file(props.keyStore)
+        storePassword System.getenv('ANDROID_KEYSTORE_PASSWORD') //props.keyStorePassword
+        keyAlias System.getenv('ANDROID_KEY_ALIAS') //props.keyAlias
+        keyPassword System.getenv('ANDROID_KEY_ALIAS_PASSWORD') // props.keyAliasPassword
+      }
     }
     buildTypes {
         release {
@@ -142,9 +147,6 @@ task copyDownloadableDepsToLibs(type: Copy) {
   into 'libs'
 }
 
-def props = new Properties()
-props.load(new FileInputStream(rootProject.file("release.properties")))
-android.signingConfigs.release.storeFile = rootProject.file(props.keyStore)
-android.signingConfigs.release.storePassword = props.keyStorePassword
-android.signingConfigs.release.keyAlias = props.keyAlias
-android.signingConfigs.release.keyPassword = props.keyAliasPassword
+task experiment(type: Exec) {
+  println android.signingConfigs.release
+}
