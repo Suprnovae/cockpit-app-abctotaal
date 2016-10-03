@@ -6,6 +6,8 @@ an asset that can be bundled into the executable for publishing.
 
 ## iOS
 
+![iOS build status on Bitrise](https://www.bitrise.io/app/8ba75a56197d5bf4.svg?token=p9czcJJ9L_7gEInbs6MFVA)
+
 Build a bundle for iOS into `ios/main.jsbundle`.
 
     react-native bundle
@@ -14,6 +16,8 @@ Build a bundle for iOS into `ios/main.jsbundle`.
     --bundle-output ios/main.jsbundle
 
 ## Android
+
+![Android build status on Bitrise](https://www.bitrise.io/app/677e139a058b6ec3.svg?token=OY6IXAwg15VlslFf_OrfKQ)
 
 Build a bundle for Android into `android/app/src/main/assets/index.android.bundle`.
 
