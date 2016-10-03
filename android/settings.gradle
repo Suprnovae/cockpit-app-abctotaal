@@ -1,4 +1,4 @@
-rootProject.name = 'WinAdm Cockpit'
+rootProject.name = 'suprnovae.cockpit.abctotaal'
 
 include ':app'
 include ':ExtraDimensions', ':app'
