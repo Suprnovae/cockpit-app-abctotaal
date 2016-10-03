@@ -45,3 +45,6 @@ android/keystores/debug.keystore
 # Bundles
 android/app/src/main/assets/index.android.bundle
 ios/main.jsbundle
+
+# RVM artifacts
+.ruby-*
