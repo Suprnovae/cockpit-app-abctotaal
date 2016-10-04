@@ -10,8 +10,10 @@ import {
 } from 'react-native';
 
 import styles from '../styles/Gauge';
-import Intl from 'intl';
-
+//import Intl from 'intl';
+//https://twitter.com/estejs/status/749279806341218305
+global.Intl = require('./../node_modules/intl/lib/core.js');
+global.Intl.__applyLocaleSensitivePrototypes();
 
 // p = 10, c = 8
 //   c/p=8/10=10/10-2/10

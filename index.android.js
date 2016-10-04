@@ -77,4 +77,4 @@ class WinAdmCockpit extends Component {
   }
 }
 
-AppRegistry.registerComponent('WinAdm Cockpit', () => WinAdmCockpit);
+AppRegistry.registerComponent('suprnovae.cockpit.abctotaal', () => WinAdmCockpit);
