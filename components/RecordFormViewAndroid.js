@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import {
   DatePickerAndroid,
+  NativeModules,
   ScrollView,
+  StatusBar,
   Text,
   TextInput,
   TimePickerAndroid
@@ -9,12 +11,12 @@ import {
   TouchableWithoutFeedback,
   View,
 } from 'react-native';
+import DisplayAndroid from NativeModules.DisplayAndroid;
 
 
 var moment = require('moment');
 
 import ActionButton from 'react-native-action-button';
-import ExtraDimensions from 'react-native-extra-dimensions-android';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import CustomToolbarAndroid from './CustomToolbarAndroid';
 import styles from '../styles/Initial';
@@ -74,11 +76,11 @@ export default class RecordFormViewAndroid extends Component {
       {title: 'Save', show: 'always'},
     ];
 
-    let hSoftMenuBar = ExtraDimensions.get("SOFT_MENU_BAR_HEIGHT");
-    let hStatusBar = ExtraDimensions.get("STATUS_BAR_HEIGHT");
-    let hWindow = ExtraDimensions.get("REAL_WINDOW_HEIGHT");
+    let height = StatusBar.currentHeight;
+    let hStatusBar = StatusBar.currentHeight;
     let paddingTop = 168+56; // styles.{priceblockAndroid, toolbar}.height
-    let offset = hWindow-(paddingTop+hStatusBar+hSoftMenuBar);
+    let offset = height - hStatusBar - paddingTop;
+    console.log(`offset is ${offset}`);
 
     return(
       <View style={{flex: 1}}>
