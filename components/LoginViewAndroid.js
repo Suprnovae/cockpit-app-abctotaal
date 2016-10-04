@@ -2,7 +2,6 @@ import React from 'react';
 import {
   Dimensions,
   Image,
-  PropTypes,
   ScrollView,
   StyleSheet,
   Text,
@@ -24,9 +23,9 @@ const windowWidth = Dimensions.get("window").width;
 const windowHeight = Dimensions.get("window").height -80;
 
 LoginViewAndroid.propTypes = {
-  handle: PropTypes.string,
-  secret: PropTypes.string,
-  authenticate: PropTypes.func.isRequired,
+  handle: React.PropTypes.string,
+  secret: React.PropTypes.string,
+  authenticate: React.PropTypes.func.isRequired,
 };
 
 let mapStateToProps = function(state) {
