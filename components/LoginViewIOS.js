@@ -1,4 +1,6 @@
-import React, {
+import React from 'react';
+import {
+  Alert
   Image,
   PropTypes,
   ScrollView,
@@ -6,7 +8,6 @@ import React, {
   TextInput,
   TouchableOpacity,
   View,
-  Alert
 } from 'react-native';
 
 import styles from '../styles/LoginForm';

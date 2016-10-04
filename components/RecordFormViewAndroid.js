@@ -1,13 +1,13 @@
-import React, {
-  Component,
-  ToolbarAndroid,
-  View,
+import React, { Component } from 'react';
+import {
+  DatePickerAndroid,
+  ScrollView,
   Text,
   TextInput,
-  ScrollView,
-  DatePickerAndroid,
-  TouchableWithoutFeedback,
   TimePickerAndroid
+  ToolbarAndroid,
+  TouchableWithoutFeedback,
+  View,
 } from 'react-native';
 
 

@@ -1,7 +1,7 @@
-import React, {
+import React, { Component } from 'react';
+import {
   AppRegistry,
   BackAndroid,
-  Component,
   ListView,
   ScrollView,
   Navigator,
