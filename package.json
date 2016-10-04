@@ -10,8 +10,8 @@
     "buffer": "^4.6.0",
     "intl": "^1.2.4",
     "moment": "^2.13.0",
-    "react": "^0.14.8",
-    "react-native": "^0.24.1",
+    "react": "^15.3.2",
+    "react-native": "^0.34.1",
     "react-native-action-button": "^1.1.4",
     "react-native-camera": "git+https://github.com/lwansbrough/react-native-camera.git",
     "react-native-collapsible": "^0.6.0",
@@ -24,6 +24,7 @@
     "redux-thunk": "^2.1.0"
   },
   "devDependencies": {
-    "eslint": "^2.9.0"
+    "eslint": "^2.9.0",
+    "whatwg-fetch": "^1.0.0"
   }
 }
