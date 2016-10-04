@@ -17,12 +17,12 @@ public class DisplayPackage implements ReactPackage {
   @Override
   public List<NativeModule> createNativeModules(ReactApplicationContext c) {
     List<NativeModule> modules = new ArrayList<>();
-    module.add(new DisplayModule(c));
+    modules.add(new DisplayModule(c));
     return modules;
   }
 
   @Override
-  public List<Class<?, extends JavaScriptModule>> createJSModules() {
+  public List<Class<? extends JavaScriptModule>> createJSModules() {
     return Collections.emptyList();
   }
 
