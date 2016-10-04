@@ -1,7 +1,6 @@
 rootProject.name = 'suprnovae.cockpit.abctotaal'
 
 include ':app'
-include ':ExtraDimensions', ':app'
 //include ':react-native-extra-dimensions-android'
 include ':react-native-vector-icons'
 include ':react-native-camera'
@@ -9,7 +8,6 @@ include ':react-native-sqlite-storage'
 
 
 //project(':react-native-extra-dimensions-android').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-extra-dimensions-android/android')
-project(':ExtraDimensions').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-extra-dimensions-android/android')
 project(':react-native-vector-icons').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-vector-icons/android')
 project(':react-native-camera').projectDir = new File(rootProject.projectDir,   '../node_modules/react-native-camera/android')
 project(':react-native-sqlite-storage').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-sqlite-storage/src/android')
