@@ -13,14 +13,14 @@
 #import "RCTLog.h"
 #import "RCTRootView.h"
 
-#define TIMEOUT_SECONDS 240
+#define TIMEOUT_SECONDS 600
 #define TEXT_TO_LOOK_FOR @"Welcome to React Native!"
 
-@interface WinAdmCockpitTests : XCTestCase
+@interface suprnovae.cockpit.abctotaalTests : XCTestCase
 
 @end
 
-@implementation WinAdmCockpitTests
+@implementation suprnovae.cockpit.abctotaalTests
 
 - (BOOL)findSubviewInView:(UIView *)view matching:(BOOL(^)(UIView *view))test
 {
