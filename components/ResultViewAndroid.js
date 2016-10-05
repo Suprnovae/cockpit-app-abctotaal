@@ -12,10 +12,10 @@ import styles from '../styles/Gauge';
 import CustomToolbarAndroid from './CustomToolbarAndroid';
 import LoginViewAndroid from './LoginViewAndroid';
 import SemiGaugeView from './SemiGaugeView';
+import I18n from './../i18n/translations';
 
 const ResultViewAndroid = (props, x, y, z) => {
   let ds = new ListView.DataSource({rowHasChanged: (a, b) => a !== b});
-  console.log('somethng');
 
   const renderer = (data, section, row, highlight) =>
     <SemiGaugeView result={data}/>
@@ -26,9 +26,9 @@ const ResultViewAndroid = (props, x, y, z) => {
         style={styles.toolbar}
         icon={require('image!toolbar_icon')}
         navIcon={require('image!toolbar_icon')}
-        title='Resultaat'
+        title={I18n.t('Overview')}
         actions={[
-          { title: 'Profiel' }
+          { title: I18n.t('Profile') }
         ]}
         onActionSelected={(i) => {
           console.log('navigator', props.navigator);

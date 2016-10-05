@@ -5,6 +5,7 @@ import {
   BackAndroid,
   Navigator,
 } from 'react-native';
+import I18n from './i18n/translations';
 
 import LoginViewAndroid from './components/LoginViewAndroid';
 import ResultViewAndroid from './components/ResultViewAndroid';
@@ -41,7 +42,7 @@ class WinAdmCockpit extends Component {
     return (
       <Provider store={store}>
         <Navigator
-          initialRoute={{name: 'Resultaat', id:'overview', index: 0}}
+          initialRoute={{name: I18n.t('Overview'), id:'overview', index: 0}}
           renderScene={this.renderScene.bind(this)}
           configureScene={route => (
             route.sceneConfig || Navigator.SceneConfigs.HorizontalSwipeJump

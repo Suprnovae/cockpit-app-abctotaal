@@ -8,7 +8,8 @@ import {
   Text,
   TouchableOpacity,
 } from 'react-native';
-import I18n from 'react-native-i18n';
+
+import I18n from '../i18n/translations';
 
 import styles from '../styles/Gauge';
 

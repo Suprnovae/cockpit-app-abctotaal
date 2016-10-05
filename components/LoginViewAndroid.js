@@ -9,6 +9,7 @@ import {
   TouchableOpacity,
   View
 } from 'react-native';
+import I18n from '../i18n/translations';
 
 import styles from '../styles/LoginForm';
 import { authenticate } from '.././actions';
@@ -81,7 +82,7 @@ const form = (props) =>
   <View>
     <View style={styles.inputContainer}>
       <TextInput
-        placeholder="Email"
+        placeholder={I18n.t('Email')}
         placeholderTextColor="rgba(255,255,255,0.75)"
         keyboardType="email-address"
         selectionColor="white"
@@ -97,7 +98,7 @@ const form = (props) =>
     <View style={styles.inputContainer}>
       <TextInput
         ref={(ref) => this._passwordRef = ref}
-        placeholder="Password"
+        placeholder={I18n.t('Password')}
         placeholderTextColor="rgba(255,255,255,0.75)"
         secureTextEntry={true}
         selectionColor="white"
@@ -125,7 +126,7 @@ const form = (props) =>
         textStyle={{fontSize: 14}}
         style={styles.loginButton}
       >
-        {props.isSignup ? "Sign Up" : "Login"}
+        { props.isSignup ? I18n.t('Sign Up') : I18n.t('Login') }
       </Button>
     </View>
   </View>;
@@ -137,7 +138,7 @@ const container = (props) => {
         style={styles.toolbar}
         icon={require('image!toolbar_icon')}
         navIcon={require('image!toolbar_icon')}
-        title='Login'
+        title={I18n.t('Login')}
         actions={[]}/>
       <View style={styles.container}>
         <ScrollView
