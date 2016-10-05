@@ -9,9 +9,9 @@ import {
   TouchableOpacity,
 } from 'react-native';
 
-import styles from '../styles/Gauge';
-import Intl from 'intl';
+import I18n from '../i18n/translations';
 
+import styles from '../styles/Gauge';
 
 // p = 10, c = 8
 //   c/p=8/10=10/10-2/10
@@ -54,10 +54,10 @@ class SemiGaugeView extends Component {
       outputRange: ['rgb(241, 28, 64)', 'rgb(116, 240, 67)' ,'rgb(52, 168, 249)'],
     });
 
-    let valueFormatter = new Intl.NumberFormat('nl-NL', {
-      style: 'currency',
-      currency: 'EUR',
-      minimumFractionDigits: 0
+    let format = x => I18n.toCurrency(x, {
+      unit: '€',
+      delimiter: '.',
+      separator: ','
     });
 
     let result = this.props.result;
@@ -68,7 +68,7 @@ class SemiGaugeView extends Component {
         if (obj.value === undefined) {
           return <Text key={key} style={style}>{obj.text}</Text>
         } else {
-          return <Text key={key} style={style}>{valueFormatter.format(obj.value)}</Text>
+          return <Text key={key} style={style}>{format(obj.value)}</Text>
         }
       }
     );
@@ -76,7 +76,7 @@ class SemiGaugeView extends Component {
     return(
       <View style={styles.container}>
         <Text style={styles.title}>{result.description}</Text>
-        <Text style={styles.value}>{valueFormatter.format(result.actual)}</Text>
+        <Text style={styles.value}>{format(result.actual)}</Text>
         <View style={[styles.tabs, {width: Dimensions.get('window').width}]}>
           {tags}
         </View>
