@@ -17,7 +17,7 @@ import javax.annotation.Nullable;
 
 import com.oblador.vectoricons.VectorIconsPackage;
 import com.lwansbrough.RCTCamera.*;
-import org.pgsqlite.SQLitePluginPackage;
+//import org.pgsqlite.SQLitePluginPackage;
 
 import com.suprnovae.cockpit.abctotaal.display.DisplayPackage;
 
@@ -43,9 +43,8 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
-            new ReactNativeI18n(),
+          new ReactNativeI18n(),
           new DisplayPackage(),
-          //new SQLitePluginPackage(),
           new VectorIconsPackage(),
           new RCTCameraPackage()
       );
