@@ -15,6 +15,15 @@ Build a bundle for iOS into `ios/main.jsbundle`.
     --entry-file index.ios.js
     --bundle-output ios/main.jsbundle
 
+The following environment variables need to be configured on Bitrise in order
+to complete a build with [Fastlane](https://docs.fastlane.tools):
+
+ - `IOS_CODESIGNING_ID` setup as secret env var (e.g.: `iPhone Distribution: Codesigning Entity's Name (XXXXXXXXXX)`)
+ - `IOS_APPLE_TEAM_ID` setup as secret env var
+ - `SLACK_URL`
+ - `IOS_BUILD_DIR`
+
+
 ## Android
 
 ![Android build status on Bitrise](https://www.bitrise.io/app/677e139a058b6ec3.svg?token=OY6IXAwg15VlslFf_OrfKQ)

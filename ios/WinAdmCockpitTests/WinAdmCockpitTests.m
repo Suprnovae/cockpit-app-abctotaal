@@ -16,11 +16,11 @@
 #define TIMEOUT_SECONDS 600
 #define TEXT_TO_LOOK_FOR @"Welcome to React Native!"
 
-@interface suprnovae.cockpit.abctotaalTests : XCTestCase
+@interface WinAdmCockpitTests : XCTestCase
 
 @end
 
-@implementation suprnovae.cockpit.abctotaalTests
+@implementation WinAdmCockpitTests
 
 - (BOOL)findSubviewInView:(UIView *)view matching:(BOOL(^)(UIView *view))test
 {

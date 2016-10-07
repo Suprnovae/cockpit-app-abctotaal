@@ -63,4 +63,4 @@ class WinAdmCockpit extends Component {
   }
 }
 
-AppRegistry.registerComponent('WinAdm Cockpit', () => WinAdmCockpit);
+AppRegistry.registerComponent('WinAdmCockpit', () => WinAdmCockpit);

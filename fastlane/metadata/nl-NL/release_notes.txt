@@ -1,0 +1,1 @@
+Fouten tijdens het inloggen worden gerapporteerd middels een foutmelding.
