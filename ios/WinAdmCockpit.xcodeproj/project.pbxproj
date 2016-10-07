@@ -832,7 +832,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.suprnovae.cockpit.abctotaal.ABCTotaalCockpit;
+				PRODUCT_BUNDLE_IDENTIFIER = com.suprnovae.cockpit.abctotaal;
 				PRODUCT_NAME = WinAdmCockpit;
 				TARGETED_DEVICE_FAMILY = 1;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -861,7 +861,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.suprnovae.cockpit.abctotaal.ABCTotaalCockpit;
+				PRODUCT_BUNDLE_IDENTIFIER = com.suprnovae.cockpit.abctotaal;
 				PRODUCT_NAME = WinAdmCockpit;
 				TARGETED_DEVICE_FAMILY = 1;
 				VERSIONING_SYSTEM = "apple-generic";

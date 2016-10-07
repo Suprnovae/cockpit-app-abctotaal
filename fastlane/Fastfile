@@ -35,7 +35,14 @@ platform :ios do
   lane :beta do
     # match(type: "appstore") # more information: https://codesigning.guide
     update_app_identifier(
+      xcodeproj: 'ios/WinAdmCockpit.xcodeproj',
+      plist_path: 'WinAdmCockpit/Info.plist',
       app_identifier: 'com.suprnovae.cockpit.abctotaal'
+    )
+
+    increment_version_number(
+      xcodeproj: 'ios/WinAdmCockpit.xcodeproj',
+      version_number: File.open('../VERSION/iOS', 'r').read.strip
     )
 
     gym(
