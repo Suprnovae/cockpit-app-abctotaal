@@ -1,5 +1,6 @@
 import React from 'react';
 import {
+  Alert,
   Dimensions,
   Image,
   ScrollView,
@@ -118,10 +119,15 @@ const form = (props) =>
             console.log('passing on for', this.email);
             props.navigator.pop();
           };
-          let fail = () => {
-            console.log('shit');
+          let fail = (e) => {
+            console.log('authentication failed', e);
+            Alert.alert(
+              I18n.t('Invalid credentials'),
+              I18n.t('Verify credentials, try again'),
+              [{text: I18n.t('OK')}]
+            );
           };
-          props.authenticate(this.email, this.password, pass, fail);
+          props.authenticate(this.email, this.password).then(pass).catch(fail);
         } }
         textStyle={{fontSize: 14}}
         style={styles.loginButton}
