@@ -46,15 +46,6 @@ export function updateReport(report) {
 // persist to storage (async)
 export function saveReport(content) {
   return (dispatch, getState) => {
-    const show = _ => {
-      console.log('report saved', data);
-      return dispatch(updateReport(data));
-    };
-    const fail = reason => {
-      console.log('report save failed because', reason);
-      return Promise.reject();
-    };
-
     console.log('updated at', content.updated_at);
     const data = {
       organization: {
@@ -67,8 +58,10 @@ export function saveReport(content) {
       data: content.data,
     };
 
-    let storable = JSON.stringify(data);
-    AsyncStorage.setItem('report', storable).then(show, fail);
+    const show = _ => dispatch(updateReport(data));
+    const fail = reason => Promise.reject(reason);
+
+    AsyncStorage.setItem('report', JSON.stringify(data)).then(show, fail);
   }
 };
 
@@ -124,11 +117,10 @@ export function saveBasicAuthCredentials(handle, secret) {
 };
 
 export function authenticate(handle, secret) {
-  console.log('authenticate', handle, secret);
   return (dispatch, getState) => {
     let fetch = _ => dispatch(fetchReport());
     let persist = latest => dispatch(saveReport(latest));
-    let fail = _ => Project.reject();
+    let fail = err => Promise.reject(err);
     return dispatch(saveBasicAuthCredentials(handle, secret))
       .then(fetch, fail)
       .then(persist, fail);

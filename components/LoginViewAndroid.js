@@ -120,7 +120,7 @@ const form = (props) =>
             props.navigator.pop();
           };
           let fail = (e) => {
-            console.log('shit', e);
+            console.log('authentication failed', e);
             Alert.alert(
               I18n.t('Invalid credentials'),
               I18n.t('Verify credentials, try again'),

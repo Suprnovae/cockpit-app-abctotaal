@@ -6,7 +6,6 @@ const getOverview = (token) => {
     let succeed = json => { console.log('json', json); return resolve(json); }
     let fail = err => reject(err);
     let handle = response => {
-      console.log('RES', response.status, response.statusText, response);
       if(response.ok) { return response.json().then(succeed, fail); }
       return fail(`${response.status}:${response.statusText}`);
     };

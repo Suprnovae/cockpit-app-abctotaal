@@ -5,7 +5,6 @@ import {
   UPDATE_CREDENTIALS,
 } from './actions';
 import helpers from './helpers';
-console.log('reducers helpers', helpers);
 
 function records(state = [], action) {
   switch(action.type) {
