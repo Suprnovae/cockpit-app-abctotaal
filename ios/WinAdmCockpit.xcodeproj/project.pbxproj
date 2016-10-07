@@ -28,6 +28,8 @@
 		39E0FF5A18A64A2F812E0974 /* Entypo.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FC302B1839E649D0B6840C9C /* Entypo.ttf */; };
 		3C2DBEC89D8A4E3CAE7C358C /* Ionicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6C0B868F390B4F39BBF609E5 /* Ionicons.ttf */; };
 		3DA7E2E8B2114C68BC381312 /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = E7D20587B612443BBB41D454 /* libsqlite3.0.tbd */; };
+		63FF3D181DA7F8AE00B44E3C /* WinAdmCockpitUISnapshotTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63FF3D171DA7F8AE00B44E3C /* WinAdmCockpitUISnapshotTests.swift */; };
+		63FF3D321DA7F9B500B44E3C /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63FF3D311DA7F9B500B44E3C /* SnapshotHelper.swift */; };
 		6E8AFDEA7C054579896EE8D7 /* libSQLite.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C7EDA4E215D425590B3D24B /* libSQLite.a */; };
 		76BCD3B7B38546C682A252D9 /* Zocial.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 858A3F1787B740C8843ABE7A /* Zocial.ttf */; };
 		7B13F7552B0E47D8A295A5ED /* FontAwesome.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F351FFC2FA24404EB6E5CEFB /* FontAwesome.ttf */; };
@@ -137,6 +139,20 @@
 			remoteGlobalIDString = E23D7B471ACEFE2A00C59171;
 			remoteInfo = SQLite;
 		};
+		63FF3D1A1DA7F8AE00B44E3C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 83CBB9F71A601CBA00E9B192 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 13B07F861A680F5B00A75B9A;
+			remoteInfo = WinAdmCockpit;
+		};
+		63FF3D211DA7F8AE00B44E3C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A5FD94C1271B473682A42281 /* RCTCamera.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 6388C8B41DA7F85200AC8B3D;
+			remoteInfo = WinAdmCockpitUISnapshotTests;
+		};
 		78C398B81ACF4ADC00677621 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 78C398B01ACF4ADC00677621 /* RCTLinking.xcodeproj */;
@@ -177,6 +193,10 @@
 		398D50D4E6254B30A4CC10F4 /* Octicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Octicons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Octicons.ttf"; sourceTree = "<group>"; };
 		570CB904F4E248DF9E9956D1 /* SQLite.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = SQLite.xcodeproj; path = "../node_modules/react-native-sqlite-storage/src/ios/SQLite.xcodeproj"; sourceTree = "<group>"; };
 		5BBDCAF07452433D9D37F229 /* RNVectorIcons.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNVectorIcons.xcodeproj; path = "../node_modules/react-native-vector-icons/RNVectorIcons.xcodeproj"; sourceTree = "<group>"; };
+		63FF3D151DA7F8AD00B44E3C /* WinAdmCockpitUISnapshotTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WinAdmCockpitUISnapshotTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		63FF3D171DA7F8AE00B44E3C /* WinAdmCockpitUISnapshotTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WinAdmCockpitUISnapshotTests.swift; sourceTree = "<group>"; };
+		63FF3D191DA7F8AE00B44E3C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		63FF3D311DA7F9B500B44E3C /* SnapshotHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SnapshotHelper.swift; path = ../../fastlane/SnapshotHelper.swift; sourceTree = "<group>"; };
 		6C0B868F390B4F39BBF609E5 /* Ionicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Ionicons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Ionicons.ttf"; sourceTree = "<group>"; };
 		789D3D57486D42569073FD8E /* libRNI18n.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNI18n.a; sourceTree = "<group>"; };
 		78C398B01ACF4ADC00677621 /* RCTLinking.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTLinking.xcodeproj; path = "../node_modules/react-native/Libraries/LinkingIOS/RCTLinking.xcodeproj"; sourceTree = "<group>"; };
@@ -222,6 +242,13 @@
 				6E8AFDEA7C054579896EE8D7 /* libSQLite.a in Frameworks */,
 				3DA7E2E8B2114C68BC381312 /* libsqlite3.0.tbd in Frameworks */,
 				059642C0CF764E0A8F4CD7BD /* libRNVectorIcons.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		63FF3D121DA7F8AD00B44E3C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -359,6 +386,7 @@
 			isa = PBXGroup;
 			children = (
 				634A504B1DA5CE3700667791 /* libRCTCamera.a */,
+				63FF3D221DA7F8AE00B44E3C /* WinAdmCockpitUISnapshotTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -369,6 +397,16 @@
 				634A50601DA5CE3700667791 /* libSQLite.a */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		63FF3D161DA7F8AD00B44E3C /* WinAdmCockpitUISnapshotTests */ = {
+			isa = PBXGroup;
+			children = (
+				63FF3D311DA7F9B500B44E3C /* SnapshotHelper.swift */,
+				63FF3D171DA7F8AE00B44E3C /* WinAdmCockpitUISnapshotTests.swift */,
+				63FF3D191DA7F8AE00B44E3C /* Info.plist */,
+			);
+			path = WinAdmCockpitUISnapshotTests;
 			sourceTree = "<group>";
 		};
 		78C398B11ACF4ADC00677621 /* Products */ = {
@@ -414,6 +452,7 @@
 				13B07FAE1A68108700A75B9A /* WinAdmCockpit */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				00E356EF1AD99517003FC87E /* WinAdmCockpitTests */,
+				63FF3D161DA7F8AD00B44E3C /* WinAdmCockpitUISnapshotTests */,
 				83CBBA001A601CBA00E9B192 /* Products */,
 				B495D9F5F06F4677B02A5BB8 /* Frameworks */,
 				60C160E54B5D4F28897937F3 /* Resources */,
@@ -427,6 +466,7 @@
 			children = (
 				13B07F961A680F5B00A75B9A /* WinAdmCockpit.app */,
 				00E356EE1AD99517003FC87E /* WinAdmCockpitTests.xctest */,
+				63FF3D151DA7F8AD00B44E3C /* WinAdmCockpitUISnapshotTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -478,12 +518,31 @@
 			productReference = 13B07F961A680F5B00A75B9A /* WinAdmCockpit.app */;
 			productType = "com.apple.product-type.application";
 		};
+		63FF3D141DA7F8AD00B44E3C /* WinAdmCockpitUISnapshotTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 63FF3D301DA7F8AE00B44E3C /* Build configuration list for PBXNativeTarget "WinAdmCockpitUISnapshotTests" */;
+			buildPhases = (
+				63FF3D111DA7F8AD00B44E3C /* Sources */,
+				63FF3D121DA7F8AD00B44E3C /* Frameworks */,
+				63FF3D131DA7F8AD00B44E3C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				63FF3D1B1DA7F8AE00B44E3C /* PBXTargetDependency */,
+			);
+			name = WinAdmCockpitUISnapshotTests;
+			productName = WinAdmCockpitUISnapshotTests;
+			productReference = 63FF3D151DA7F8AD00B44E3C /* WinAdmCockpitUISnapshotTests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		83CBB9F71A601CBA00E9B192 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0730;
 				LastUpgradeCheck = 610;
 				ORGANIZATIONNAME = Facebook;
 				TargetAttributes = {
@@ -493,6 +552,10 @@
 					};
 					13B07F861A680F5B00A75B9A = {
 						DevelopmentTeam = 2TVYU4HQ24;
+					};
+					63FF3D141DA7F8AD00B44E3C = {
+						CreatedOnToolsVersion = 7.3.1;
+						TestTargetID = 13B07F861A680F5B00A75B9A;
 					};
 				};
 			};
@@ -569,6 +632,7 @@
 			targets = (
 				13B07F861A680F5B00A75B9A /* WinAdmCockpit */,
 				00E356ED1AD99517003FC87E /* WinAdmCockpitTests */,
+				63FF3D141DA7F8AD00B44E3C /* WinAdmCockpitUISnapshotTests */,
 			);
 		};
 /* End PBXProject section */
@@ -665,6 +729,13 @@
 			remoteRef = 634A505F1DA5CE3700667791 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
+		63FF3D221DA7F8AE00B44E3C /* WinAdmCockpitUISnapshotTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = WinAdmCockpitUISnapshotTests.xctest;
+			remoteRef = 63FF3D211DA7F8AE00B44E3C /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		78C398B91ACF4ADC00677621 /* libRCTLinking.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
@@ -706,6 +777,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		63FF3D131DA7F8AD00B44E3C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
@@ -743,6 +821,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		63FF3D111DA7F8AD00B44E3C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				63FF3D181DA7F8AE00B44E3C /* WinAdmCockpitUISnapshotTests.swift in Sources */,
+				63FF3D321DA7F9B500B44E3C /* SnapshotHelper.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -750,6 +837,11 @@
 			isa = PBXTargetDependency;
 			target = 13B07F861A680F5B00A75B9A /* WinAdmCockpit */;
 			targetProxy = 00E356F41AD99517003FC87E /* PBXContainerItemProxy */;
+		};
+		63FF3D1B1DA7F8AE00B44E3C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 13B07F861A680F5B00A75B9A /* WinAdmCockpit */;
+			targetProxy = 63FF3D1A1DA7F8AE00B44E3C /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -868,6 +960,39 @@
 			};
 			name = Release;
 		};
+		63FF3D1C1DA7F8AE00B44E3C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_TESTABILITY = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = WinAdmCockpitUISnapshotTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.suprnovae.cockpit.abctotaal.WinAdmCockpitUISnapshotTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TEST_TARGET_NAME = WinAdmCockpit;
+			};
+			name = Debug;
+		};
+		63FF3D1D1DA7F8AE00B44E3C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = WinAdmCockpitUISnapshotTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.suprnovae.cockpit.abctotaal.WinAdmCockpitUISnapshotTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = WinAdmCockpit;
+			};
+			name = Release;
+		};
 		83CBBA201A601CBA00E9B192 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -982,6 +1107,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		63FF3D301DA7F8AE00B44E3C /* Build configuration list for PBXNativeTarget "WinAdmCockpitUISnapshotTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				63FF3D1C1DA7F8AE00B44E3C /* Debug */,
+				63FF3D1D1DA7F8AE00B44E3C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 		83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "WinAdmCockpit" */ = {
 			isa = XCConfigurationList;
