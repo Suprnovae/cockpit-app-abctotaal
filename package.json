@@ -4,7 +4,11 @@
   "private": true,
   "scripts": {
     "style": "eslint -c .eslintrc.json **/*.js",
-    "fix-style": "eslint --fix -c .eslintrc.json **/*.js"
+    "fix-style": "eslint --fix -c .eslintrc.json **/*.js",
+    "test": "jest"
+  },
+  "jest": {
+    "preset": "jest-react-native"
   },
   "dependencies": {
     "buffer": "^4.6.0",
