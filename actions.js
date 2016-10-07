@@ -7,22 +7,7 @@ export const CLEAR_REPORT = 'CLEAR_REPORT';
 export const UPDATE_CREDENTIALS = 'UPDATE_CREDS';
 
 import { AsyncStorage } from 'react-native';
-
-const API_URI = 'https://cockpit-production-abctotaal.herokuapp.com/overview.json';
-
-const getOverview = (token) => {
-  return new Promise((resolve, reject) => {
-    let headers = new Headers({ 'Authorization': `Basic ${token}` });
-    let succeed = json => { console.log('json', json); return resolve(json); }
-    let fail = err => reject(err);
-    let handle = response => {
-      console.log('RES', response.status, response.statusText, response);
-      if(response.ok) { return response.json().then(succeed, fail); }
-      return fail(`${response.status}:${response.statusText}`);
-    };
-    return fetch(API_URI, { headers }).then(handle, fail);
-  });
-};
+import api from './api';
 
 // NOTE: Often I will get or fetch some information asyncronously, to call an
 // update action on success upon which the application state is mutated.
@@ -112,7 +97,7 @@ export function getReport() {
 
 // fetch from source (async)
 export function fetchReport() {
-  return (dispatch, getState) => getOverview(getState().auth.token);
+  return (dispatch, getState) => api.getOverview(getState().auth.token);
 };
 
 // clear report in state (sync)
