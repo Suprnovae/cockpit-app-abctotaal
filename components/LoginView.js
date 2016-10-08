@@ -51,7 +51,6 @@ const form = (props) =>
     </View>
     <View style={styles.inputContainer}>
       <TextInput
-        ref={(ref) => this._passwordRef = ref}
         placeholder={I18n.t('Password')}
         placeholderTextColor="rgba(255,255,255,0.75)"
         secureTextEntry={true}

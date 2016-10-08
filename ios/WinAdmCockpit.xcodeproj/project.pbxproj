@@ -28,8 +28,8 @@
 		39E0FF5A18A64A2F812E0974 /* Entypo.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FC302B1839E649D0B6840C9C /* Entypo.ttf */; };
 		3C2DBEC89D8A4E3CAE7C358C /* Ionicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6C0B868F390B4F39BBF609E5 /* Ionicons.ttf */; };
 		3DA7E2E8B2114C68BC381312 /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = E7D20587B612443BBB41D454 /* libsqlite3.0.tbd */; };
+		633A5C671DA864CF00E8E16B /* SnapshotHelper2-3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 633A5C661DA864CF00E8E16B /* SnapshotHelper2-3.swift */; };
 		63FF3D181DA7F8AE00B44E3C /* WinAdmCockpitUISnapshotTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63FF3D171DA7F8AE00B44E3C /* WinAdmCockpitUISnapshotTests.swift */; };
-		63FF3D321DA7F9B500B44E3C /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63FF3D311DA7F9B500B44E3C /* SnapshotHelper.swift */; };
 		6E8AFDEA7C054579896EE8D7 /* libSQLite.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C7EDA4E215D425590B3D24B /* libSQLite.a */; };
 		76BCD3B7B38546C682A252D9 /* Zocial.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 858A3F1787B740C8843ABE7A /* Zocial.ttf */; };
 		7B13F7552B0E47D8A295A5ED /* FontAwesome.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F351FFC2FA24404EB6E5CEFB /* FontAwesome.ttf */; };
@@ -193,10 +193,10 @@
 		398D50D4E6254B30A4CC10F4 /* Octicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Octicons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Octicons.ttf"; sourceTree = "<group>"; };
 		570CB904F4E248DF9E9956D1 /* SQLite.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = SQLite.xcodeproj; path = "../node_modules/react-native-sqlite-storage/src/ios/SQLite.xcodeproj"; sourceTree = "<group>"; };
 		5BBDCAF07452433D9D37F229 /* RNVectorIcons.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNVectorIcons.xcodeproj; path = "../node_modules/react-native-vector-icons/RNVectorIcons.xcodeproj"; sourceTree = "<group>"; };
+		633A5C661DA864CF00E8E16B /* SnapshotHelper2-3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "SnapshotHelper2-3.swift"; path = "../../fastlane/SnapshotHelper2-3.swift"; sourceTree = "<group>"; };
 		63FF3D151DA7F8AD00B44E3C /* WinAdmCockpitUISnapshotTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WinAdmCockpitUISnapshotTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		63FF3D171DA7F8AE00B44E3C /* WinAdmCockpitUISnapshotTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WinAdmCockpitUISnapshotTests.swift; sourceTree = "<group>"; };
 		63FF3D191DA7F8AE00B44E3C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		63FF3D311DA7F9B500B44E3C /* SnapshotHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SnapshotHelper.swift; path = ../../fastlane/SnapshotHelper.swift; sourceTree = "<group>"; };
 		6C0B868F390B4F39BBF609E5 /* Ionicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Ionicons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Ionicons.ttf"; sourceTree = "<group>"; };
 		789D3D57486D42569073FD8E /* libRNI18n.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNI18n.a; sourceTree = "<group>"; };
 		78C398B01ACF4ADC00677621 /* RCTLinking.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTLinking.xcodeproj; path = "../node_modules/react-native/Libraries/LinkingIOS/RCTLinking.xcodeproj"; sourceTree = "<group>"; };
@@ -402,7 +402,7 @@
 		63FF3D161DA7F8AD00B44E3C /* WinAdmCockpitUISnapshotTests */ = {
 			isa = PBXGroup;
 			children = (
-				63FF3D311DA7F9B500B44E3C /* SnapshotHelper.swift */,
+				633A5C661DA864CF00E8E16B /* SnapshotHelper2-3.swift */,
 				63FF3D171DA7F8AE00B44E3C /* WinAdmCockpitUISnapshotTests.swift */,
 				63FF3D191DA7F8AE00B44E3C /* Info.plist */,
 			);
@@ -555,6 +555,7 @@
 					};
 					63FF3D141DA7F8AD00B44E3C = {
 						CreatedOnToolsVersion = 7.3.1;
+						LastSwiftMigration = 0800;
 						TestTargetID = 13B07F861A680F5B00A75B9A;
 					};
 				};
@@ -825,8 +826,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				633A5C671DA864CF00E8E16B /* SnapshotHelper2-3.swift in Sources */,
 				63FF3D181DA7F8AE00B44E3C /* WinAdmCockpitUISnapshotTests.swift in Sources */,
-				63FF3D321DA7F9B500B44E3C /* SnapshotHelper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -973,6 +974,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.suprnovae.cockpit.abctotaal.WinAdmCockpitUISnapshotTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 				TEST_TARGET_NAME = WinAdmCockpit;
 			};
 			name = Debug;
@@ -989,6 +991,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.suprnovae.cockpit.abctotaal.WinAdmCockpitUISnapshotTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_TARGET_NAME = WinAdmCockpit;
 			};
 			name = Release;
@@ -1115,6 +1118,7 @@
 				63FF3D1D1DA7F8AE00B44E3C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "WinAdmCockpit" */ = {
 			isa = XCConfigurationList;
