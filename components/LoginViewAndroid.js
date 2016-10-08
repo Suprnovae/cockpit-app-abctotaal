@@ -1,20 +1,13 @@
 import React from 'react';
 import {
-  Alert,
-  Dimensions,
-  Image,
   ScrollView,
-  StyleSheet,
-  Text,
-  TextInput,
-  TouchableOpacity,
   View
 } from 'react-native';
 import I18n from '../i18n/translations';
 import styles from '../styles/LoginForm';
 import { connect } from 'react-redux';
 import CustomToolbarAndroid from './CustomToolbarAndroid';
-import form, { mapStateToProps, mapDispatchToProps } from './LoginView'
+import form, { mapStateToProps, mapDispatchToProps } from './LoginView';
 console.log({ form, mapStateToProps, mapDispatchToProps });
 
 let LoginViewAndroid = props => container(props);

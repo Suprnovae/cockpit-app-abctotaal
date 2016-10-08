@@ -1,16 +1,11 @@
 import React from 'react';
 import {
-  Alert,
-  Image,
   ScrollView,
-  Text,
-  TextInput,
-  TouchableOpacity,
   View,
 } from 'react-native';
 import styles from '../styles/LoginForm';
 import { connect } from 'react-redux';
-import form, { mapStateToProps, mapDispatchToProps } from './LoginView'
+import form, { mapStateToProps, mapDispatchToProps } from './LoginView';
 console.log({ form, mapStateToProps, mapDispatchToProps });
 
 let LoginViewIOS = props => container(props);

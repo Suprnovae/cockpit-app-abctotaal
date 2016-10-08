@@ -1,7 +1,6 @@
 import React from 'react';
 import {
   Alert,
-  Dimensions,
   Image,
   ScrollView,
   StyleSheet,
@@ -40,6 +39,7 @@ const form = (props) =>
         placeholderTextColor="rgba(255,255,255,0.75)"
         keyboardType="email-address"
         selectionColor="white"
+        accessibilityLabel="email"
         style={styles.input}
         autoFocus={true}
         autoCapitalize="none"
@@ -56,6 +56,7 @@ const form = (props) =>
         placeholderTextColor="rgba(255,255,255,0.75)"
         secureTextEntry={true}
         selectionColor="white"
+        accessibilityLabel="password"
         style={styles.input}
         autoCapitalize="none"
         autoCorrect={false}
@@ -67,6 +68,7 @@ const form = (props) =>
     <View style={styles.loginButtonContainer}>
       <Button
         onPress={ () => {
+          console.log('pressed the button');
           let pass = () => {
             console.log('passing on for', this.email);
             props.navigator.pop();
