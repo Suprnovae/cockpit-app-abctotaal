@@ -7,8 +7,8 @@ import I18n from '../i18n/translations';
 import styles from '../styles/LoginForm';
 import { connect } from 'react-redux';
 import CustomToolbarAndroid from './CustomToolbarAndroid';
-import form, { mapStateToProps, mapDispatchToProps } from './LoginView';
-console.log({ form, mapStateToProps, mapDispatchToProps });
+import LoginView, { mapStateToProps, mapDispatchToProps } from './LoginView';
+console.log('LOGINVIEW', { LoginView, mapStateToProps, mapDispatchToProps });
 
 let LoginViewAndroid = props => container(props);
 LoginViewAndroid.propTypes = {
@@ -25,13 +25,14 @@ const container = props =>
       navIcon={require('image!toolbar_icon')}
       title={I18n.t('Login')}
       actions={[]}/>
-    <View style={styles.container}>
+    <View style={styles.container} accessibilityLabel="overview.android.parent">
       <ScrollView
+        accessibilityLabel="overview.android"
         keyboardShouldPersistTaps={false}
         automaticallyAdjustContentInsets={true}
         alwaysBounceVertical={false}
         style={styles.scrollView} >
-        <View style={styles.innerContainer}>{form(props)}</View>
+        <View style={styles.innerContainer}><LoginView {...props}/></View>
       </ScrollView>
     </View>
   </View>

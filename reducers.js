@@ -50,7 +50,7 @@ function overview(state = {}, action) {
 }
 
 function auth(state = null, action) {
-  console.log("Handling auth at", state);
+  console.log("Handling auth for", action.handle);
   switch(action.type) {
   case UPDATE_CREDENTIALS:
     return { token: helpers.base64(`${action.handle}:${action.secret}`) }

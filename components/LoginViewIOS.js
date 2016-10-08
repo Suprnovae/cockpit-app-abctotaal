@@ -5,8 +5,8 @@ import {
 } from 'react-native';
 import styles from '../styles/LoginForm';
 import { connect } from 'react-redux';
-import form, { mapStateToProps, mapDispatchToProps } from './LoginView';
-console.log({ form, mapStateToProps, mapDispatchToProps });
+import LoginView, { mapStateToProps, mapDispatchToProps } from './LoginView';
+console.log('LOGINVIEW', { LoginView, mapStateToProps, mapDispatchToProps });
 
 let LoginViewIOS = props => container(props);
 LoginViewIOS.propTypes = {
@@ -16,13 +16,14 @@ LoginViewIOS.propTypes = {
 };
 
 const container = props =>
-  <View style={styles.container}>
+  <View style={styles.container} accessiblityLabel="overview.ios.parent">
     <ScrollView
-      keyboardShouldPersistTaps={false}
+      accessibilityLabel="overview.ios"
+      keyboardShouldPersistTaps={true}
       automaticallyAdjustContentInsets={true}
       alwaysBounceVertical={false}
       style={styles.scrollView}>
-      <View style={styles.innerContainer}>{form(props)}</View>
+      <View style={styles.innerContainer}><LoginView {...props}/></View>
     </ScrollView>
   </View>
 

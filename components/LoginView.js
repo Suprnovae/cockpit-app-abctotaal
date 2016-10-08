@@ -17,7 +17,7 @@ import { authenticate } from '.././actions';
 import { connect } from 'react-redux';
 import Button from './Button';
 
-let mapStateToProps = function(state) {
+export const mapStateToProps = function(state) {
   console.log("state is", state);
   return {
     handle: state.credentials ? state.credentials.handle : undefined,
@@ -25,68 +25,95 @@ let mapStateToProps = function(state) {
   }
 };
 
-let mapDispatchToProps = function(dispatch) {
+export const mapDispatchToProps = function(dispatch) {
   return {
     authenticate: (h, s) => dispatch(authenticate(h, s))
   }
 };
 
-const form = (props) =>
-  <View>
-    <View style={styles.inputContainer}>
-      <TextInput
-        placeholder={I18n.t('Email')}
-        placeholderTextColor="rgba(255,255,255,0.75)"
-        keyboardType="email-address"
-        selectionColor="white"
-        accessibilityLabel="email"
-        style={styles.input}
-        autoFocus={true}
-        autoCapitalize="none"
-        autoCorrect={false}
-        onChangeText={(email) => this.email = email}
-        returnKeyType="next"
-        onSubmitEditing={() => this._passwordRef.focus()}
-      />
-    </View>
-    <View style={styles.inputContainer}>
-      <TextInput
-        placeholder={I18n.t('Password')}
-        placeholderTextColor="rgba(255,255,255,0.75)"
-        secureTextEntry={true}
-        selectionColor="white"
-        accessibilityLabel="password"
-        style={styles.input}
-        autoCapitalize="none"
-        autoCorrect={false}
-        onChangeText={(password) => this.password = password}
-        returnKeyType={props.isSignup ? "next" : "go"}
-        onSubmitEditing={() => props.isSignup ? this._passwordConfirmationRef.focus() : this.submitForm()}
-      />
-    </View>
-    <View style={styles.loginButtonContainer}>
-      <Button
-        onPress={ () => {
-          console.log('pressed the button');
-          let pass = () => {
-            console.log('passing on for', this.email);
-            props.navigator.pop();
-          };
-          let fail = (e) => {
-            console.log('authentication failed', e);
-            Alert.alert(
-              I18n.t('Invalid credentials'),
-              I18n.t('Verify credentials, try again'),
-              [{text: I18n.t('OK')}]
-            );
-          };
-          props.authenticate(this.email, this.password).then(pass).catch(fail);
-        } }
-        textStyle={{fontSize: 14}}
-        style={styles.loginButton} >
-        { props.isSignup ? I18n.t('Sign Up') : I18n.t('Login') }
-      </Button>
-    </View>
-  </View>;
+export default class LoginView extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      email: undefined,
+      password: undefined,
+      refs: {}
+    }
+    console.log('this.state', this.state);
 
-export { form as default, mapStateToProps, mapDispatchToProps };
+    // binding to this
+    // https://facebook.github.io/react/docs/reusable-components.html#autobinding
+    this.login = this.login.bind(this)
+  }
+
+  login() {
+    const email = this.state.email, password = this.state.password;
+
+    let pass = () => {
+      console.log('passing on for', email);
+      this.props.navigator.pop();
+    };
+
+    let fail = (e) => {
+      console.log('authentication failed', e);
+      Alert.alert(
+        I18n.t('Invalid credentials'),
+        I18n.t('Verify credentials, try again'),
+        [{text: I18n.t('OK')}]
+      );
+    };
+
+    this.props.authenticate(email, password).then(pass).catch(fail);
+  }
+
+  render() {
+    return(
+      <View>
+        <View style={styles.inputContainer}>
+          <TextInput
+            ref={ref => { this.state.refs.handle = ref }}
+            placeholder={I18n.t('Email')}
+            placeholderTextColor="rgba(255,255,255,0.75)"
+            keyboardType="email-address"
+            selectionColor="white"
+            accessibilityLabel={I18n.t('Email')}
+            style={styles.input}
+            autoFocus={true}
+            autoCapitalize="none"
+            autoCorrect={false}
+            onChangeText={email => this.setState({email})}
+            returnKeyType="next"
+            onSubmitEditing={_ => this.state.refs.secret.focus()}
+          />
+        </View>
+        <View style={styles.inputContainer} onResponderMove={i => console.log('parent', i)}>
+          <TextInput
+            ref={ref => { this.state.refs.secret = ref }}
+            placeholder={I18n.t('Password')}
+            placeholderTextColor="rgba(255,255,255,0.75)"
+            secureTextEntry={true}
+            selectionColor="white"
+            accessibilityLabel={I18n.t('Password')}
+            style={styles.input}
+            autoCapitalize="none"
+            autoCorrect={false}
+            onChangeText={password => this.setState({password})}
+            onResponderMove={i => console.log('child', i)}
+            onStartShouldSetResponderCapture={i => console.log('start', i)}
+            returnKeyType={"go"}
+            onSubmitEditing={this.login}
+          />
+        </View>
+        <View style={styles.loginButtonContainer}>
+          <Button
+            accessibilityLabel={I18n.t('Login')}
+            onPress={this.login}
+            textStyle={{fontSize: 14}}
+            style={styles.loginButton} >
+            { this.props.isSignup ? I18n.t('Sign Up') : I18n.t('Login') }
+          </Button>
+        </View>
+      </View>
+    );
+  }
+}

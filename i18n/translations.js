@@ -13,7 +13,7 @@ I18n.translations = {
   'nl': {
     'Profile': 'Profiel',
     'Overview': 'Overzicht',
-    'Login': 'Inloggen',
+    'Login': 'Log in',
     'Email': 'E-mail adres',
     'Password': 'Wachtwoord',
     'OK': 'Akkoord',
