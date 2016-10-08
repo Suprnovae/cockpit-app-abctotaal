@@ -61,6 +61,12 @@ platform :ios do
     # You can also use other beta testing services here (run `fastlane actions`)
   end
 
+  lane :screenshot do
+    snapshot(
+      scheme: 'WinAdmCockpitUISnapshotTests',
+    )
+  end
+
   desc "Deploy a new version to the App Store"
   lane :release do
     # match(type: "appstore")
