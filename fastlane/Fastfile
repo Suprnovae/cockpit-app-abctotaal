@@ -64,7 +64,11 @@ platform :ios do
   lane :screenshot do
     snapshot(
       scheme: 'WinAdmCockpitUISnapshotTests',
-      ios_version: '9.3'
+      ios_version: '9.3',
+      localize_simulator: true,
+      reinstall_app: true,
+      erase_simulator: true,
+      configuration: 'Debug'
     )
   end
 
