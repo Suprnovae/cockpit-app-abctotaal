@@ -37,6 +37,7 @@ class WinAdmCockpitUISnapshotTests: XCTestCase {
 
       let accountButton = app.navigationBars["Overview"].buttons.element(boundBy: 1)
 
+      print("app elements \(app.debugDescription)")
       print("app.navigationBars Overview \(app.navigationBars["Overview"])")
       print("accountButton \(accountButton.debugDescription)")
 
