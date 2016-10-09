@@ -35,7 +35,7 @@ class WinAdmCockpitUISnapshotTests: XCTestCase {
       let app = XCUIApplication()
       snapshot(name: "Blank")
 
-      let accountButton = app.navigationBars["Resultaat"].buttons.element(boundBy: 1)
+      let accountButton = app.navigationBars["Overzicht"].buttons.element(boundBy: 1)
       print(accountButton.debugDescription)
 
       accountButton.tap()
