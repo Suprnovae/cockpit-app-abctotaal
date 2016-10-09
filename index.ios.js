@@ -58,7 +58,7 @@ class WinAdmCockpit extends Component {
           style={styles.container}
           initialRoute={{
             component: ResultViewIOS,
-            title: I18n.t('Resultaat'),
+            title: I18n.t('Overview'),
             //leftButtonIcon: require('image!NavBarButtonIcon'),
             rightButtonIcon: require('image!NavBarButtonAccount'),
             rightButtonTitle: I18n.t('Account'),

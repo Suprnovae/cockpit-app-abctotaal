@@ -35,7 +35,7 @@ class WinAdmCockpitUISnapshotTests: XCTestCase {
       let app = XCUIApplication()
       snapshot(name: "Blank")
 
-      let accountButton = app.navigationBars["Overzicht"].buttons.element(boundBy: 1)
+      let accountButton = app.navigationBars["Overview"].buttons.element(boundBy: 1)
       print(accountButton.debugDescription)
 
       accountButton.tap()
@@ -52,6 +52,10 @@ class WinAdmCockpitUISnapshotTests: XCTestCase {
       snapshot(name: "Overview")
 
       app.swipeUp()
+
+      print(">>>>>")
+      print(app.launchEnvironment.debugDescription)
+      print(app.launchArguments)
 
       XCTAssert(true)
     }

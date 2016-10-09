@@ -64,6 +64,7 @@ platform :ios do
   lane :screenshot do
     snapshot(
       scheme: 'WinAdmCockpitUISnapshotTests',
+      ios_version: '9.3'
     )
   end
 
