@@ -18,6 +18,8 @@ languages([
 #  ["pt", "pt_BR"] # Portuguese with Brazilian locale
 ])
 
+ios_version '9.3'
+
 # Arguments to pass to the app on launch. See https://github.com/fastlane/snapshot#launch-arguments
 # launch_arguments(["-favColor red"])
 
