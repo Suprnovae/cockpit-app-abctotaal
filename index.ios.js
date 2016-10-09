@@ -6,6 +6,7 @@ import {
   NavigatorIOS,
   Text,
 } from 'react-native';
+import I18n from './i18n/translations';
 
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
@@ -32,8 +33,18 @@ let unsubscribe = store.subscribe(() => {
 store.dispatch(getReport());
 
 class WinAdmCockpit extends Component {
-  rightButtonPress() {
-    this.refs.nav.navigator.push({
+  constructor(props) {
+    super(props);
+    this.state = {
+      refs: {}
+    }
+
+    this.account = this.account.bind(this)
+  }
+
+  account() {
+    console.log('goto account', this.state.refs.nav);
+    this.state.refs.nav.push({
       title: "Login",
       component: LoginViewIOS,
     });
@@ -43,15 +54,16 @@ class WinAdmCockpit extends Component {
     return (
       <Provider store={store}>
         <NavigatorIOS
-          ref="nav"
+          ref={ref => { this.state.refs.nav = ref }}
           style={styles.container}
           initialRoute={{
             component: ResultViewIOS,
-            title: 'Resultaat',
+            title: I18n.t('Resultaat'),
             //leftButtonIcon: require('image!NavBarButtonIcon'),
             rightButtonIcon: require('image!NavBarButtonAccount'),
+            rightButtonTitle: I18n.t('Account'),
             onLeftButtonPress: () => {console.log('pressed');},
-            onRightButtonPress:this.rightButtonPress.bind(this)
+            onRightButtonPress: this.account
           }}
           itemWrapperStyle={styles.ItemWrapper}
           tintColor={colors.tint}
