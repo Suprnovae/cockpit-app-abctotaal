@@ -63,12 +63,12 @@ class WinAdmCockpitUISnapshotTests: XCTestCase {
 
   func getStringFor(_ term: String, locale: Locale) -> String? {
     return [
-      "nl": ["Overview": "Overzicht", "Next": "Volgende", "Go": "Ga", "handle": "annemiek@abctotaal.nl", "secret": "geheim"],
-      "en": ["Overview": "Overview", "Next": "Next", "Go": "Go", "handle": "anne@example.com", "secret": "secret"]
+      "nl": ["Overview": "Overzicht", "Next": "Volgende", "Password": "Wachtwoord", "Go": "Ga", "handle": "annemiek@abctotaal.nl", "secret": "geheim"],
+      "en": ["Overview": "Overview", "Next": "Next", "Password": "Password", "Go": "Go", "handle": "anne@example.com", "secret": "secret"]
     ][locale.languageCode!]?[term]
   }
 
-  func waitForElementToAppear(element: XCUIElement, timeout: TimeInterval = 5,  file: String = #file, line: UInt = #line) {
+  func waitForElementToAppear(element: XCUIElement, timeout: TimeInterval = 20,  file: String = #file, line: UInt = #line) {
     let existsPredicate = NSPredicate(format: "exists == true")
 
     expectation(for: existsPredicate, evaluatedWith: element, handler: nil)
