@@ -42,18 +42,20 @@ platform :ios do
 
     increment_version_number(
       xcodeproj: 'ios/WinAdmCockpit.xcodeproj',
-      version_number: File.open('../VERSION/iOS', 'r').read.strip
+      version_number: File.open(
+        "#{ENV['BITRISE_SOURCE_DIR']}/VERSION/iOS", 'r'
+      ).read.strip
     )
 
     gym(
       project: 'ios/WinAdmCockpit.xcodeproj',
-      configuration: 'Debug',
+      configuration: 'Release',
       scheme: 'WinAdmCockpit',
       codesigning_identity: ENV['IOS_CODESIGNING_ID'],
-
       clean: true,
       output_name: 'debug.ipa',
-      output_directory: ENV['IOS_BUILD_DIR']
+      output_directory: ENV['IOS_BUILD_DIR'],
+      buildlog_path: ENV['IOS_BUILD_DIR']
     ) # Build your app - more options available
     #pilot
 
@@ -68,7 +70,9 @@ platform :ios do
       localize_simulator: true,
       reinstall_app: true,
       erase_simulator: true,
-      configuration: 'Debug'
+      configuration: 'Debug',
+      buildlog_path: ENV['IOS_SCREENSHOTS_DIR'],
+      output_directory: ENV['IOS_SCREENSHOTS_DIR']
     )
   end
 
@@ -87,7 +91,8 @@ platform :ios do
       codesigning_identity: ENV['IOS_CODESIGNING_ID'],
       clean: true,
       output_name: 'release.ipa',
-      output_directory: 'ios/build'
+      output_directory: 'ios/build',
+      buildlog_path: ENV['IOS_BUILD_DIR']
     ) # Build your app - more options available
     #deliver(force: true)
     # frameit

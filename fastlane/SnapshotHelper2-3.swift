@@ -46,6 +46,7 @@ public class Snapshot: NSObject {
             let trimCharacterSet = NSCharacterSet.whitespacesAndNewlines
             deviceLanguage = try NSString(contentsOfFile: path, encoding: String.Encoding.utf8.rawValue).trimmingCharacters(in: trimCharacterSet) as String
             app.launchArguments += ["-AppleLanguages", "(\(deviceLanguage))"]
+          print("Set language to \(deviceLanguage)")
         } catch {
             print("Couldn't detect/set language...")
         }
@@ -68,6 +69,7 @@ public class Snapshot: NSObject {
             locale = NSLocale(localeIdentifier: deviceLanguage).localeIdentifier
         }
         app.launchArguments += ["-AppleLocale", "\"\(locale)\""]
+      print("Set locale to \(locale.debugDescription)")
     }
 
     class func setLaunchArguments(app: XCUIApplication) {
