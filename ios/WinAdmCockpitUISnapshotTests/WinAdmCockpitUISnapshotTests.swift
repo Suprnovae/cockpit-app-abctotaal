@@ -32,37 +32,40 @@ class WinAdmCockpitUISnapshotTests: XCTestCase {
   }
 
   func testLoginAndOverviewFlow() {
-    let app = XCUIApplication()
+    let app: XCUIApplication = XCUIApplication()
 
-    let overview = app.navigationBars["Overview"]
-    waitForElementToAppear(element: overview)
+    let locale = NSLocale.current
+
+    let navBar = app.navigationBars.element(boundBy: 0)
+    waitForElementToAppear(element: navBar)
     snapshot(name: "Blank")
 
-    let accountButton = overview.buttons.element(boundBy: 1)
-
-    print("app elements \(app.debugDescription)")
-    print("app.navigationBars Overview \(app.navigationBars["Overview"])")
-    print("accountButton \(accountButton.debugDescription)")
+    let accountButton = navBar.buttons.element(boundBy: 1)
 
     accountButton.tap()
 
     let emailField = app.textFields.element
     emailField.typeText("annemiek@abctotaal.nl")
 
-    app.buttons["Next"].tap()
+    app.buttons[getStringFor("Next", locale: locale)!].tap()
     app.typeText("geheim")
 
     snapshot(name: "Login")
 
-    app.buttons["Go"].tap()
+    app.buttons[getStringFor("Go", locale: locale)!].tap()
     snapshot(name: "Overview")
 
     app.swipeUp()
 
-    print("launch env: \(app.launchEnvironment.debugDescription)")
-    print("launch args: \(app.launchArguments.debugDescription)")
 
     XCTAssert(true)
+  }
+
+  func getStringFor(_ term: String, locale: Locale) -> String? {
+    return [
+      "nl": ["Overview": "Overzicht", "Next": "Volgende", "Go": "Ga"],
+      "en": ["Overview": "Overview", "Next": "Next", "Go": "Go"]
+    ][locale.languageCode!]?[term]
   }
 
   func waitForElementToAppear(element: XCUIElement, timeout: TimeInterval = 5,  file: String = #file, line: UInt = #line) {
