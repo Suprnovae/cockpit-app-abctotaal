@@ -45,10 +45,10 @@ class WinAdmCockpitUISnapshotTests: XCTestCase {
     accountButton.tap()
 
     let emailField = app.textFields.element
-    emailField.typeText("annemiek@abctotaal.nl")
+    emailField.typeText(getStringFor("handle", locale: locale)!)
 
     app.buttons[getStringFor("Next", locale: locale)!].tap()
-    app.typeText("geheim")
+    app.typeText(getStringFor("secret", locale: locale)!)
 
     snapshot(name: "Login")
 
@@ -63,8 +63,8 @@ class WinAdmCockpitUISnapshotTests: XCTestCase {
 
   func getStringFor(_ term: String, locale: Locale) -> String? {
     return [
-      "nl": ["Overview": "Overzicht", "Next": "Volgende", "Go": "Ga"],
-      "en": ["Overview": "Overview", "Next": "Next", "Go": "Go"]
+      "nl": ["Overview": "Overzicht", "Next": "Volgende", "Go": "Ga", "handle": "annemiek@abctotaal.nl", "secret": "geheim"],
+      "en": ["Overview": "Overview", "Next": "Next", "Go": "Go", "handle": "anne@example.com", "secret": "secret"]
     ][locale.languageCode!]?[term]
   }
 
