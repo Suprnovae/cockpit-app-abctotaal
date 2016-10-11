@@ -47,6 +47,8 @@ platform :ios do
       ).read.strip
     )
 
+    cert
+    sigh
     gym(
       project: 'ios/WinAdmCockpit.xcodeproj',
       configuration: 'Release',
