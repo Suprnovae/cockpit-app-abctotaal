@@ -551,6 +551,7 @@
 						TestTargetID = 13B07F861A680F5B00A75B9A;
 					};
 					13B07F861A680F5B00A75B9A = {
+						DevelopmentTeam = 2TVYU4HQ24;
 						ProvisioningStyle = Manual;
 					};
 					63FF3D141DA7F8AD00B44E3C = {
@@ -907,9 +908,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = NO;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 2TVYU4HQ24;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
@@ -929,6 +931,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.suprnovae.cockpit.abctotaal;
 				PRODUCT_NAME = WinAdmCockpit;
+				PROVISIONING_PROFILE = "cc945022-eeac-4418-be3a-448bd3c7df39";
+				PROVISIONING_PROFILE_SPECIFIER = "XC: com.suprnovae.cockpit.abctotaal";
 				TARGETED_DEVICE_FAMILY = 1;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
@@ -939,8 +943,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 2TVYU4HQ24;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
@@ -960,6 +965,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.suprnovae.cockpit.abctotaal;
 				PRODUCT_NAME = WinAdmCockpit;
+				PROVISIONING_PROFILE = "cc945022-eeac-4418-be3a-448bd3c7df39";
+				PROVISIONING_PROFILE_SPECIFIER = "XC: com.suprnovae.cockpit.abctotaal";
 				TARGETED_DEVICE_FAMILY = 1;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
