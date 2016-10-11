@@ -47,8 +47,16 @@ platform :ios do
       ).read.strip
     )
 
-    cert
-    sigh
+    cert(
+      team_id: ENV['IOS_APPLE_TEAM_ID'],
+      username: ENV['IOS_APPLE_USERNAME']
+    )
+
+    sigh(
+      team_id: ENV['IOS_APPLE_TEAM_ID'],
+      username: ENV['IOS_APPLE_USERNAME']
+    )
+
     gym(
       project: 'ios/WinAdmCockpit.xcodeproj',
       configuration: 'Release',
