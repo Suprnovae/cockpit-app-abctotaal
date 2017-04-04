@@ -24,12 +24,10 @@ project.xcworkspace
 
 # Android/IJ
 #
+*.iml
 .idea
 .gradle
 local.properties
-android/*.iml
-android/app/*.iml
-android/release.properties
 
 # node.js
 #
@@ -41,3 +39,10 @@ buck-out/
 \.buckd/
 android/app/libs
 android/keystores/debug.keystore
+
+# Bundles
+android/app/src/main/assets/index.android.bundle
+ios/main.jsbundle
+
+# RVM artifacts
+.ruby-*

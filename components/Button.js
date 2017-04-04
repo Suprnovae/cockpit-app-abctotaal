@@ -1,7 +1,7 @@
 'use strict';
-import React, {
+import React, { Component } from 'react';
+import {
   StyleSheet,
-  PropTypes,
   Text,
   TouchableOpacity,
   View
@@ -49,12 +49,12 @@ class Button extends React.Component {
 }
 
 Button.propTypes = {
-  onPress: PropTypes.func,
+  onPress: React.PropTypes.func,
   style: View.propTypes.style,
   textStyle: Text.propTypes.style,
-  activeOpacity: PropTypes.number,
-  enabled: PropTypes.bool,
-  children: PropTypes.string
+  activeOpacity: React.PropTypes.number,
+  enabled: React.PropTypes.bool,
+  children: React.PropTypes.string
 };
 
 Button.defaultProps = {

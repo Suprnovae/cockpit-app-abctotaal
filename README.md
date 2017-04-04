@@ -6,6 +6,8 @@ an asset that can be bundled into the executable for publishing.
 
 ## iOS
 
+![iOS build status on Bitrise](https://www.bitrise.io/app/8ba75a56197d5bf4.svg?token=p9czcJJ9L_7gEInbs6MFVA)
+
 Build a bundle for iOS into `ios/main.jsbundle`.
 
     react-native bundle
@@ -14,6 +16,8 @@ Build a bundle for iOS into `ios/main.jsbundle`.
     --bundle-output ios/main.jsbundle
 
 ## Android
+
+![Android build status on Bitrise](https://www.bitrise.io/app/677e139a058b6ec3.svg?token=OY6IXAwg15VlslFf_OrfKQ)
 
 Build a bundle for Android into `android/app/src/main/assets/index.android.bundle`.
 
@@ -28,21 +32,12 @@ Before producing an apk, one may need to [generate a key](https://facebook.githu
 
     keytool -genkey -v -keystore ${KEY_NAME}.keystore -alias ${KEY_ALIAS} -keyalg RSA -keysize 2048 -validity 10000
 
-Create a `android/release.properties` file which contains a information on the
-key, the alias and the passwords involved.
+Provide a few environment variables in order to perform APK signing:
 
-```groovy
-keyStore=KEY_NAME.keystore
-keyStorePassword=KEY_PASSWORD
-keyAlias=KEY_ALIAS
-keyAliasPassword=KEY_ALIAS_PASSWORD
-```
-
-Replace the capitalized phrases for the actual information and remember to
-never commit these files into the repository since they contain sensitive information.
-
-The `android/release.properties` is referred to in the `android/app/build.gradle`
-file.
+ - `ANDROID_KEYSTORE_PATH`: the path to the keystore file
+ - `ANDROID_KEYSTORE_PASSWORD`: the password to the keystore file
+ - `ANDROID_KEY_ALIAS`: the key alias
+ - `ANDROID_KEY_ALIAS_PASSWORD`: key alias password
 
 Build an apk by assembling a release and possibly installing it on a emulated/virtual or physical device.
 

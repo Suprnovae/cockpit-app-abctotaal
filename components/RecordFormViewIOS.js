@@ -1,14 +1,14 @@
-import React, {
-  Component,
-  ToolbarAndroid,
-  View,
-  ScrollView,
-  TextInput,
-  Text,
+import React, { Component } from 'react';
+import {
   DatePickerIOS,
   NavigatorIOS,
+  ScrollView,
+  Text,
+  TextInput,
+  ToolbarAndroid,
   TouchableHighlight,
   TouchableOpacity,
+  View,
 } from 'react-native';
 
 var moment = require('moment');

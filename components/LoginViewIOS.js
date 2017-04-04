@@ -1,12 +1,12 @@
-import React, {
+import React from 'react';
+import {
+  Alert
   Image,
-  PropTypes,
   ScrollView,
   Text,
   TextInput,
   TouchableOpacity,
   View,
-  Alert
 } from 'react-native';
 
 import styles from '../styles/LoginForm';
@@ -20,9 +20,9 @@ var alertMessage = "Controleer de verbinding of uw gebruikersnaam en wachtwoord 
 var alertTitle = "Inloggen mislukt"
 
 LoginViewIOS.propTypes = {
-  handle: PropTypes.string,
-  secret: PropTypes.string,
-  authenticate: PropTypes.func.isRequired,
+  handle: React.PropTypes.string,
+  secret: React.PropTypes.string,
+  authenticate: React.PropTypes.func.isRequired,
 };
 
 let mapStateToProps = function(state) {
