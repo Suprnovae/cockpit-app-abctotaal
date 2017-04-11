@@ -26,6 +26,8 @@ const initialState = {
   },
 };
 
+const nativeImageSource = require('nativeImageSource');
+
 const store = createStore(basicApp, initialState, applyMiddleware(thunk));
 let unsubscribe = store.subscribe(() => {
   console.log("state changed to", store.getState());
@@ -60,7 +62,7 @@ class WinAdmCockpit extends Component {
             component: ResultViewIOS,
             title: I18n.t('Overview'),
             //leftButtonIcon: require('image!NavBarButtonIcon'),
-            rightButtonIcon: require('image!NavBarButtonAccount'),
+            rightButtonIcon: nativeImageSource({ ios: 'NavBarButtonAccount'}),
             rightButtonTitle: I18n.t('Account'),
             onLeftButtonPress: () => {console.log('pressed');},
             onRightButtonPress: this.account
