@@ -30,8 +30,8 @@ class LedgerViewAndroid extends Component {
         <View style={{flex: 1}}>
           <CustomToolbarAndroid
             style={styles.toolbar}
-            icon={require('image!toolbar_icon')}
-            navIcon={require('image!toolbar_icon')}
+            icon={source={'uri':'toolbar_icon'}}
+            navIcon={source={'uri':'toolbar_icon'}}
             title='ABC Notitie Blok'
             actions={[]}/>
           <View style={styles.container}>

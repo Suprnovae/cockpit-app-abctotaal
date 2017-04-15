@@ -21,8 +21,8 @@ const container = props =>
   <View style={{flex: 1}}>
     <CustomToolbarAndroid
       style={styles.toolbar}
-      icon={require('image!toolbar_icon')}
-      navIcon={require('image!toolbar_icon')}
+      icon={source={'uri':'toolbar_icon'}}
+      navIcon={source={'uri':'toolbar_icon'}}
       title={I18n.t('Login')}
       actions={[]}/>
     <View style={styles.container} accessibilityLabel="overview.android.parent">

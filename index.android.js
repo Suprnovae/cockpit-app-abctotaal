@@ -12,8 +12,8 @@ import ResultViewAndroid from './components/ResultViewAndroid';
 import styles, { colors } from './styles/Initial';
 
 const actions = [
-  {title: 'Settings', icon: require('image!app_logo'), show: 'always'},
-  {title: 'Boom', icon: require('image!app_logo'), show: 'always'},
+  {title: 'Settings', icon: {source:{'uri':'app_logo'}}, show: 'always'},
+  {title: 'Boom', icon: {source:{'uri':'app_logo'}}, show: 'always'},
 ];
 
 import { Provider } from 'react-redux';
