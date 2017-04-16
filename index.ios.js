@@ -6,6 +6,7 @@ import {
   NavigatorIOS,
   Text,
 } from 'react-native';
+import I18n from './i18n/translations';
 
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
@@ -25,6 +26,8 @@ const initialState = {
   },
 };
 
+const nativeImageSource = require('nativeImageSource');
+
 const store = createStore(basicApp, initialState, applyMiddleware(thunk));
 let unsubscribe = store.subscribe(() => {
   console.log("state changed to", store.getState());
@@ -32,8 +35,21 @@ let unsubscribe = store.subscribe(() => {
 store.dispatch(getReport());
 
 class WinAdmCockpit extends Component {
-  rightButtonPress() {
-    this.refs.nav.navigator.push({
+  state: Object
+  gotoAccount: Function
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      refs: {}
+    }
+
+    this.gotoAccount = this.gotoAccount.bind(this)
+  }
+
+  gotoAccount() {
+    console.log('goto account', this.state.refs.nav);
+    this.state.refs.nav.push({
       title: "Login",
       component: LoginViewIOS,
     });
@@ -43,15 +59,21 @@ class WinAdmCockpit extends Component {
     return (
       <Provider store={store}>
         <NavigatorIOS
-          ref="nav"
+          ref={ref => { this.state.refs.nav = ref }}
           style={styles.container}
           initialRoute={{
             component: ResultViewIOS,
-            title: 'Resultaat',
+            title: I18n.t('Overview'),
             //leftButtonIcon: require('image!NavBarButtonIcon'),
-            rightButtonIcon: require('image!NavBarButtonAccount'),
+            rightButtonIcon: nativeImageSource({
+              ios: 'NavBarButtonAccount',
+              // http://facebook.github.io/react-native/docs/images.html#why-not-automatically-size-everything
+              height: 0, // TODO: set height
+              width: 0, // TODO: set width
+            }),
+            rightButtonTitle: I18n.t('Account'),
             onLeftButtonPress: () => {console.log('pressed');},
-            onRightButtonPress:this.rightButtonPress.bind(this)
+            onRightButtonPress: this.gotoAccount
           }}
           itemWrapperStyle={styles.ItemWrapper}
           tintColor={colors.tint}

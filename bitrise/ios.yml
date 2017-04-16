@@ -1,0 +1,94 @@
+---
+format_version: 1.2.0
+default_step_lib_source: https://github.com/bitrise-io/bitrise-steplib.git
+trigger_map:
+- push_branch: "*ios*"
+  workflow: beta
+- pull_request_source_branch: "*"
+  workflow: beta
+  pull_request_target_branch: dev
+workflows:
+  beta:
+    steps:
+    - activate-ssh-key@3.1.1:
+        run_if: '{{getenv "SSH_RSA_PRIVATE_KEY" | ne ""}}'
+    - git-clone@3.4.0: {}
+    - script@1.1.3:
+        title: Install dependencies from package.json
+        inputs:
+        - content: |-
+            #!/bin/bash
+            npm install && npm install flow-bin -g
+    - install-react-native@0.1.0: {}
+    - script@1.1.3:
+        title: Prep test assets
+        inputs:
+        - content: |-
+            #!/bin/bash
+            make clean-api && make test
+        - is_debug: 'yes'
+    - react-native-bundle@1.0.1: {}
+    - fastlane@2.2.0:
+        title: Screenshots 📸
+        inputs:
+        - lane: ios screenshot
+    - script@1.1.3:
+        title: Zip screenshots 📸
+        inputs:
+        - content: |-
+            #!/bin/bash
+            zip -r $IOS_BUILD_DIR/screenshots.zip screenshots
+    - amazon-s3-upload@3.1.3:
+        inputs:
+        - access_key_id: "$AWS_S3_ACCESS_KEY"
+        - secret_access_key: "$AWS_S3_SECRET_ACCESS_KEY"
+        - upload_bucket: "$AWS_S3_BUCKET"
+        - upload_local_path: "$IOS_BUILD_DIR/screenshots"
+        - acl_control: public-read
+        - aws_region: eu-central-1
+    - script@1.1.3:
+        title: Copy real api
+        inputs:
+        - content: |-
+            #!/bin/bash
+            make clean-api && make production
+    - react-native-bundle@1.0.1: {}
+    - certificate-and-profile-installer@1.7.0: {}
+    - fastlane@2.2.0:
+        inputs:
+        - lane: ios beta
+    - deploy-to-bitrise-io@1.2.5:
+        inputs:
+        - deploy_path: "$IOS_BUILD_DIR"
+        - is_compress: 'true'
+    - slack@2.3.0:
+        inputs:
+        - webhook_url: "$SLACK_BITRISE_WEBHOOK_URL"
+        - channel: "#dev"
+        - message: |-
+            *$BITRISE_APP_TITLE* :ios: build <$BITRISE_BUILD_URL|passed> :satisfied:
+            <https://github.com/Suprnovae/cockpit-app-abctotaal/commit/$GIT_CLONE_COMMIT_HASH|`$GIT_CLONE_COMMIT_HASH` :octocat:> $GIT_CLONE_COMMIT_MESSAGE_SUBJECT
+        - message_on_error: |-
+            *$BITRISE_APP_TITLE* :ios: build <$BITRISE_BUILD_URL|failed> :sweat:
+            <https://github.com/Suprnovae/cockpit-app-abctotaal/commit/$GIT_CLONE_COMMIT_HASH|`$GIT_CLONE_COMMIT_HASH` :octocat:> $GIT_CLONE_COMMIT_MESSAGE_SUBJECT
+        - emoji: ''
+        - emoji_on_error: ''
+        - icon_url: https://bitrise-public-content-production.s3.amazonaws.com/slack/bitrise-slack-icon-128.png
+        - icon_url_on_error: https://bitrise-public-content-production.s3.amazonaws.com/slack/bitrise-slack-error-icon-128.png
+app:
+  envs:
+  - opts:
+      is_expand: false
+    BITRISE_PROJECT_PATH: ios/WinAdmCockpit.xcodeproj
+  - opts:
+      is_expand: false
+    BITRISE_SCHEME: WinAdmCockpit
+  - opts:
+      is_expand: true
+    SLACK_BITRISE_WEBHOOK_URL: "$SLACK_URL"
+  - opts:
+      is_expand: true
+    IOS_BUILD_DIR: "$BITRISE_SOURCE_DIR/ios/build"
+  - opts:
+      is_expand: true
+    FASTLANE_EXPLICIT_OPEN_SIMULATOR: 1

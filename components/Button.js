@@ -35,6 +35,9 @@ class Button extends React.Component {
         activeOpacity={this.props.activeOpacity}
         onPress={() => this.onPress()}
         style={[styles.button, this.props.style]}
+        accessibilityLabel={this.props.accessibilityLabel}
+        accessibilityTraits="button"        // iOS
+        accessibilityComponentType="button" // android
       >
         <Text style={textStyle}>{this.props.children}</Text>
       </TouchableOpacity>

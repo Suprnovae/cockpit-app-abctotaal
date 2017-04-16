@@ -4,6 +4,7 @@ import {
   REQUEST_REPORT, SAVE_REPORT, CLEAR_REPORT, UPDATE_REPORT,
   UPDATE_CREDENTIALS,
 } from './actions';
+import helpers from './helpers';
 
 function records(state = [], action) {
   switch(action.type) {
@@ -49,13 +50,10 @@ function overview(state = {}, action) {
 }
 
 function auth(state = null, action) {
-  console.log("Handling auth at", state);
+  console.log("Handling auth for", action.handle);
   switch(action.type) {
   case UPDATE_CREDENTIALS:
-    console.log(`${action.handle}:${action.secret}`);
-    return {
-      token: require('buffer').Buffer(`${action.handle}:${action.secret}`).toString('base64'),
-    }
+    return { token: helpers.base64(`${action.handle}:${action.secret}`) }
   default:
     return state
   }

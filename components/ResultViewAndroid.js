@@ -24,8 +24,8 @@ const ResultViewAndroid = (props, x, y, z) => {
     <View style={{flex: 1}}>
       <CustomToolbarAndroid
         style={styles.toolbar}
-        icon={require('image!toolbar_icon')}
-        navIcon={require('image!toolbar_icon')}
+        icon={source={'uri':'toolbar_icon'}}
+        navIcon={source={'uri':'toolbar_icon'}}
         title={I18n.t('Overview')}
         actions={[
           { title: I18n.t('Profile') }

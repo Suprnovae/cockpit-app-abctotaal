@@ -10,27 +10,13 @@
             buildForTesting = "YES"
             buildForRunning = "YES"
             buildForProfiling = "YES"
-            buildForArchiving = "YES"
-            buildForAnalyzing = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-               BuildableName = "WinAdmCockpit.app"
-               BlueprintName = "WinAdmCockpit"
-               ReferencedContainer = "container:WinAdmCockpit.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "YES"
-            buildForProfiling = "NO"
             buildForArchiving = "NO"
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "00E356ED1AD99517003FC87E"
-               BuildableName = "WinAdmCockpitTests.xctest"
-               BlueprintName = "WinAdmCockpitTests"
+               BlueprintIdentifier = "63FF3D141DA7F8AD00B44E3C"
+               BuildableName = "WinAdmCockpitUISnapshotTests.xctest"
+               BlueprintName = "WinAdmCockpitUISnapshotTests"
                ReferencedContainer = "container:WinAdmCockpit.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -46,16 +32,6 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "00E356ED1AD99517003FC87E"
-               BuildableName = "WinAdmCockpitTests.xctest"
-               BlueprintName = "WinAdmCockpitTests"
-               ReferencedContainer = "container:WinAdmCockpit.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
                BlueprintIdentifier = "63FF3D141DA7F8AD00B44E3C"
                BuildableName = "WinAdmCockpitUISnapshotTests.xctest"
                BlueprintName = "WinAdmCockpitUISnapshotTests"
@@ -66,9 +42,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-            BuildableName = "WinAdmCockpit.app"
-            BlueprintName = "WinAdmCockpit"
+            BlueprintIdentifier = "63FF3D141DA7F8AD00B44E3C"
+            BuildableName = "WinAdmCockpitUISnapshotTests.xctest"
+            BlueprintName = "WinAdmCockpitUISnapshotTests"
             ReferencedContainer = "container:WinAdmCockpit.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -85,16 +61,15 @@
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
       allowLocationSimulation = "YES">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
+      <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-            BuildableName = "WinAdmCockpit.app"
-            BlueprintName = "WinAdmCockpit"
+            BlueprintIdentifier = "63FF3D141DA7F8AD00B44E3C"
+            BuildableName = "WinAdmCockpitUISnapshotTests.xctest"
+            BlueprintName = "WinAdmCockpitUISnapshotTests"
             ReferencedContainer = "container:WinAdmCockpit.xcodeproj">
          </BuildableReference>
-      </BuildableProductRunnable>
+      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </LaunchAction>
@@ -104,16 +79,15 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
+      <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-            BuildableName = "WinAdmCockpit.app"
-            BlueprintName = "WinAdmCockpit"
+            BlueprintIdentifier = "63FF3D141DA7F8AD00B44E3C"
+            BuildableName = "WinAdmCockpitUISnapshotTests.xctest"
+            BlueprintName = "WinAdmCockpitUISnapshotTests"
             ReferencedContainer = "container:WinAdmCockpit.xcodeproj">
          </BuildableReference>
-      </BuildableProductRunnable>
+      </MacroExpansion>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">
