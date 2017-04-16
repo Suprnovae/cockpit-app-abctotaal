@@ -35,16 +35,19 @@ let unsubscribe = store.subscribe(() => {
 store.dispatch(getReport());
 
 class WinAdmCockpit extends Component {
+  state: Object
+  gotoAccount: Function
+
   constructor(props) {
     super(props);
     this.state = {
       refs: {}
     }
 
-    this.account = this.account.bind(this)
+    this.gotoAccount = this.gotoAccount.bind(this)
   }
 
-  account() {
+  gotoAccount() {
     console.log('goto account', this.state.refs.nav);
     this.state.refs.nav.push({
       title: "Login",
@@ -62,10 +65,15 @@ class WinAdmCockpit extends Component {
             component: ResultViewIOS,
             title: I18n.t('Overview'),
             //leftButtonIcon: require('image!NavBarButtonIcon'),
-            rightButtonIcon: nativeImageSource({ ios: 'NavBarButtonAccount'}),
+            rightButtonIcon: nativeImageSource({
+              ios: 'NavBarButtonAccount',
+              // http://facebook.github.io/react-native/docs/images.html#why-not-automatically-size-everything
+              height: 0, // TODO: set height
+              width: 0, // TODO: set width
+            }),
             rightButtonTitle: I18n.t('Account'),
             onLeftButtonPress: () => {console.log('pressed');},
-            onRightButtonPress: this.account
+            onRightButtonPress: this.gotoAccount
           }}
           itemWrapperStyle={styles.ItemWrapper}
           tintColor={colors.tint}
