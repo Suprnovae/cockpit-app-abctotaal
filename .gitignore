@@ -45,6 +45,7 @@ android/app/libs
 # Bundles
 android/app/src/main/assets/index.android.bundle
 ios/main.jsbundle
+ios/main.jsbundle.meta
 
 # RVM artifacts
 .ruby-*

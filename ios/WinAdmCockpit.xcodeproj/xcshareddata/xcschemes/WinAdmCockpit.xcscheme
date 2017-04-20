@@ -48,6 +48,20 @@
                ReferencedContainer = "container:WinAdmCockpit.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "NO"
+            buildForArchiving = "NO"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "845B7AEF1EA8054D00AD740E"
+               BuildableName = "WinAdmCockpitUITests.xctest"
+               BlueprintName = "WinAdmCockpitUITests"
+               ReferencedContainer = "container:WinAdmCockpit.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
       </BuildActionEntries>
    </BuildAction>
    <TestAction
@@ -56,16 +70,6 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "840D47B21EA7B37800CEB2A9"
-               BuildableName = "TestingReactNative.xctest"
-               BlueprintName = "TestingReactNative"
-               ReferencedContainer = "container:WinAdmCockpit.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
          <TestableReference
             skipped = "NO">
             <BuildableReference
