@@ -61,4 +61,7 @@ fastlane/Preview.html
 fastlane/screenshots
 fastlane/test_output
 
+#need bundler to run fastlane locally
+.bundle/
+
 api.js

@@ -11,7 +11,7 @@
 
 # This is the minimum version number required.
 # Update this, if you use features of a newer version
-fastlane_version "1.105.0"
+fastlane_version "2.27.0"
 
 default_platform :ios
 
@@ -75,7 +75,7 @@ platform :ios do
 
   lane :screenshot do
     snapshot(
-      scheme: 'WinAdmCockpitUISnapshotTests',
+      scheme: 'WinAdmCockpitUISnapshotTests2',
       ios_version: '9.3',
       localize_simulator: true,
       reinstall_app: true,
@@ -110,20 +110,21 @@ platform :ios do
 
   # You can define as many lanes as you want
 
-  after_all do |lane|
-    # This block is called, only if the executed lane was successful
+#  slack not configured
+# after_all do |lane|
+#    # This block is called, only if the executed lane was successful
+#
+#    slack(
+#      message: ":fastlane: #{lane} build succeeded"
+#    )
+#  end
 
-    slack(
-      message: ":fastlane: #{lane} build succeeded"
-    )
-  end
-
-  error do |lane, e|
-    slack(
-      message: ":fastlane: #{lane} failed because:\n\r`#{e.message}`",
-      success: false
-    )
-  end
+#  error do |lane, e|
+#    slack(
+#      message: ":fastlane: #{lane} failed because:\n\r`#{e.message}`",
+#      success: false
+#    )
+#  end
 end
 
 
