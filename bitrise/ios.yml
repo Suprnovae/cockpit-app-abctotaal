@@ -101,3 +101,6 @@ app:
   - opts:
       is_expand: true
     FASTLANE_EXPLICIT_OPEN_SIMULATOR: 1
+  - opts:
+      is_expand: true
+    IOS_SCREENSHOTS_DIR: "$BITRISE_SOURCE_DIR/ios/screens"
