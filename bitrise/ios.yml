@@ -1,5 +1,5 @@
 ---
-format_version: 1.2.0
+format_version: 1.3.1
 default_step_lib_source: https://github.com/bitrise-io/bitrise-steplib.git
 trigger_map:
 - push_branch: "*ios*"
@@ -12,14 +12,22 @@ workflows:
     steps:
     - activate-ssh-key@3.1.1:
         run_if: '{{getenv "SSH_RSA_PRIVATE_KEY" | ne ""}}'
-    - git-clone@3.4.0: {}
-    - script@1.1.3:
-        title: Install dependencies from package.json
+    - git-clone@3.4.2: {}
+    - yarn@0.0.4:
+        title: install dependencies
         inputs:
-        - content: |-
-            #!/bin/bash
-            npm install && npm install flow-bin -g
-    - install-react-native@0.1.0: {}
+        - command: install
+        - args: ''
+    - yarn@0.0.4:
+        title: install flow-bin
+        inputs:
+        - command: global add flow-bin
+        - args: ''
+    - install-react-native@0.9.1: {}
+    - script@1.1.3:
+        title: Link react-native
+        inputs:
+        - content: react-native link
     - script@1.1.3:
         title: Prep test assets
         inputs:
@@ -27,37 +35,38 @@ workflows:
             #!/bin/bash
             make clean-api && make test
         - is_debug: 'yes'
-    - react-native-bundle@1.0.1: {}
-    - fastlane@2.2.0:
-        title: Screenshots 📸
+    - react-native-bundle@1.0.3: {}
+    - fastlane@2.3.9:
+        title: "Screenshots \U0001F4F8"
         inputs:
         - lane: ios screenshot
     - script@1.1.3:
-        title: Zip screenshots 📸
+        title: "Zip screenshots \U0001F4F8"
         inputs:
         - content: |-
             #!/bin/bash
-            zip -r $IOS_BUILD_DIR/screenshots.zip screenshots
-    - amazon-s3-upload@3.1.3:
-        inputs:
-        - access_key_id: "$AWS_S3_ACCESS_KEY"
-        - secret_access_key: "$AWS_S3_SECRET_ACCESS_KEY"
-        - upload_bucket: "$AWS_S3_BUCKET"
-        - upload_local_path: "$IOS_BUILD_DIR/screenshots"
-        - acl_control: public-read
-        - aws_region: eu-central-1
+            zip -r $IOS_BUILD_DIR/screenshots.zip $IOS_SCREENSHOTS_DIR
+#    - amazon-s3-upload@3.1.3:
+#        inputs:
+#        - access_key_id: "$AWS_S3_ACCESS_KEY"
+#        - secret_access_key: "$AWS_S3_SECRET_ACCESS_KEY"
+#        - upload_bucket: "$AWS_S3_BUCKET"
+#        - upload_local_path: "$IOS_SCREENSHOTS_DIR"
+#        - acl_control: public-read
+#        - aws_region: eu-central-1
     - script@1.1.3:
         title: Copy real api
         inputs:
         - content: |-
             #!/bin/bash
             make clean-api && make production
-    - react-native-bundle@1.0.1: {}
-    - certificate-and-profile-installer@1.7.0: {}
-    - fastlane@2.2.0:
+    - react-native-bundle@1.0.3: {}
+    - certificate-and-profile-installer@1.8.4: {}
+    - fastlane@2.3.9:
         inputs:
         - lane: ios beta
-    - deploy-to-bitrise-io@1.2.5:
+    - deploy-to-bitrise-io@1.2.9:
+        is_always_run: false
         inputs:
         - deploy_path: "$IOS_BUILD_DIR"
         - is_compress: 'true'
