@@ -79,6 +79,7 @@ platform :ios do
       ios_version: '9.3',
       localize_simulator: true,
       reinstall_app: true,
+      number_of_retries: 5,
       erase_simulator: true,
       configuration: 'Debug',
       buildlog_path: ENV['IOS_SCREENSHOTS_DIR'],
