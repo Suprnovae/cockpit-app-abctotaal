@@ -18,8 +18,6 @@ default_platform :ios
 platform :ios do
   before_all do
     # ENV["SLACK_URL"] = "https://hooks.slack.com/services/..."
-    
-    
   end
 
   desc "Runs all the tests"
@@ -47,14 +45,8 @@ platform :ios do
       ).read.strip
     )
 
-    cert(
-      team_id: ENV['IOS_APPLE_TEAM_ID'],
-      username: ENV['IOS_APPLE_USERNAME']
-    )
-
-    sigh(
-      team_id: ENV['IOS_APPLE_TEAM_ID'],
-      username: ENV['IOS_APPLE_USERNAME']
+    match(
+      git_branch: "cockpit/abctotaal",
     )
 
     gym(
