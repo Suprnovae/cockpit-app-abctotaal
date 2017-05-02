@@ -1,0 +1,9 @@
+git_url ENV['FASTLANE_CERT_REPOSITORY']
+
+type ENV['FASTLANE_DEFAULT_TYPE'] # The default type, can be: appstore, adhoc, enterprise or development
+
+app_identifier [ENV['IOS_APP_ID']] # ["tools.fastlane.app", "tools.fastlane.app2"]
+username ENV['IOS_APPLE_USERNAME'] # Your Apple Developer Portal username
+
+# For all available options run `fastlane match --help`
+# Remove the # in the beginning of the line to enable the other options
