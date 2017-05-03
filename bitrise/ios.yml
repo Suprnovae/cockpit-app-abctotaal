@@ -2,13 +2,13 @@
 format_version: 1.3.1
 default_step_lib_source: https://github.com/bitrise-io/bitrise-steplib.git
 trigger_map:
-- push_branch: "*ios*"
-  workflow: beta
+#- push_branch: "*ios*"
+#  workflow: beta
 - pull_request_source_branch: "*"
-  workflow: beta
   pull_request_target_branch: dev
+  workflow: pr-build
 workflows:
-  beta:
+  release:
     steps:
     - activate-ssh-key@3.1.1:
         run_if: '{{getenv "SSH_RSA_PRIVATE_KEY" | ne ""}}'
@@ -28,7 +28,7 @@ workflows:
         title: Link react-native
         inputs:
         - content: react-native link
-    - script@1.1.3: &setup_real_api
+    - script@1.1.3: &setup_mock_api
         title: Prep test assets
         inputs:
         - content: |-
@@ -61,7 +61,7 @@ workflows:
             #!/bin/bash
             make clean-api && make production
     - react-native-bundle@1.0.3: {}
-    - certificate-and-profile-installer@1.8.4: {}
+#    - certificate-and-profile-installer@1.8.4: {}
     - fastlane@2.3.9:
         inputs:
         - lane: ios beta
@@ -84,6 +84,59 @@ workflows:
         - emoji_on_error: ''
         - icon_url: https://bitrise-public-content-production.s3.amazonaws.com/slack/bitrise-slack-icon-128.png
         - icon_url_on_error: https://bitrise-public-content-production.s3.amazonaws.com/slack/bitrise-slack-error-icon-128.png
+  pr-build:
+    steps:
+    - activate-ssh-key@3.1.1:
+        run_if: '{{getenv "SSH_RSA_PRIVATE_KEY" | ne ""}}'
+    - git-clone@3.4.2: {}
+    - yarn@0.0.4:
+        <<: *dependencies
+    - yarn@0.0.4:
+        <<: *flow_bin
+    - install-react-native@0.9.1: {}
+    - script@1.1.3:
+        <<: *link
+    - script@1.1.3:
+        <<: *setup_real_api
+    - react-native-bundle@1.0.3: {}
+    - certificate-and-profile-installer@1.8.4: {}
+    - fastlane@2.3.9:
+        inputs:
+        - lane: ios beta
+    - deploy-to-bitrise-io@1.2.9:
+        <<: *deploy
+    - slack@2.3.0:
+        <<: *report_on_slack
+  beta:
+    steps:
+    - activate-ssh-key@3.1.1:
+        run_if: '{{getenv "SSH_RSA_PRIVATE_KEY" | ne ""}}'
+    - git-clone@3.4.2: {}
+    - yarn@0.0.4:
+        <<: *dependencies
+    - yarn@0.0.4:
+        <<: *flow_bin
+    - install-react-native@0.9.1: {}
+    - script@1.1.3:
+        <<: *link
+    - script@1.1.3:
+        <<: *setup_mock_api
+    - react-native-bundle@1.0.3: {}
+    - fastlane@2.3.9:
+        <<: *screenshot
+    - script@1.1.3:
+        <<: *zip_screenshots
+    - script@1.1.3:
+        <<: *setup_real_api
+    - react-native-bundle@1.0.3: {}
+    - certificate-and-profile-installer@1.8.4: {}
+    - fastlane@2.3.9:
+        inputs:
+        - lane: ios beta
+    - deploy-to-bitrise-io@1.2.9:
+        <<: *deploy
+    - slack@2.3.0:
+        <<: *report_on_slack
 app:
   envs:
   - opts:
