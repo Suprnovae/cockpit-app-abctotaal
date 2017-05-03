@@ -141,10 +141,13 @@ app:
   envs:
   - opts:
       is_expand: false
-    BITRISE_PROJECT_PATH: ios/WinAdmCockpit.xcodeproj
+    IOS_PROJECT_PATH: ios/WinAdmCockpit.xcodeproj
   - opts:
       is_expand: false
-    BITRISE_SCHEME: WinAdmCockpit
+    IOS_SCHEME: WinAdmCockpit
+  - opts:
+      is_expand: false
+    IOS_PLIST_PATH: WinAdmCockpit/Info.plist
   - opts:
       is_expand: true
     SLACK_BITRISE_WEBHOOK_URL: "$SLACK_URL"
@@ -152,8 +155,11 @@ app:
       is_expand: true
     IOS_BUILD_DIR: "$BITRISE_SOURCE_DIR/ios/build"
   - opts:
-      is_expand: true
+      is_expand: false
     FASTLANE_EXPLICIT_OPEN_SIMULATOR: 1
+  - opts:
+      is_expand: false
+    FASTLANE_DEFAULT_TYPE: development
   - opts:
       is_expand: true
     IOS_SCREENSHOTS_DIR: "$BITRISE_SOURCE_DIR/ios/screens"
