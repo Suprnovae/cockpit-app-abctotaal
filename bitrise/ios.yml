@@ -13,22 +13,22 @@ workflows:
     - activate-ssh-key@3.1.1:
         run_if: '{{getenv "SSH_RSA_PRIVATE_KEY" | ne ""}}'
     - git-clone@3.4.2: {}
-    - yarn@0.0.4:
+    - yarn@0.0.4: &dependencies
         title: install dependencies
         inputs:
         - command: install
         - args: ''
-    - yarn@0.0.4:
+    - yarn@0.0.4: &flow_bin
         title: install flow-bin
         inputs:
         - command: global add flow-bin
         - args: ''
     - install-react-native@0.9.1: {}
-    - script@1.1.3:
+    - script@1.1.3: &link
         title: Link react-native
         inputs:
         - content: react-native link
-    - script@1.1.3:
+    - script@1.1.3: &setup_real_api
         title: Prep test assets
         inputs:
         - content: |-
@@ -36,25 +36,25 @@ workflows:
             make clean-api && make test
         - is_debug: 'yes'
     - react-native-bundle@1.0.3: {}
-    - fastlane@2.3.9:
+    - fastlane@2.3.9: &screenshot
         title: "Screenshots \U0001F4F8"
         inputs:
         - lane: ios screenshot
-    - script@1.1.3:
+    - script@1.1.3: &zip_screenshots
         title: "Zip screenshots \U0001F4F8"
         inputs:
         - content: |-
             #!/bin/bash
             zip -r $BITRISE_DEPLOY_DIR/ios.screenshots.zip $IOS_SCREENSHOTS_DIR
-    - amazon-s3-upload@3.1.3:
+    - amazon-s3-upload@3.1.3: &s3_upload
         inputs:
         - access_key_id: "$AWS_S3_ACCESS_KEY"
-        - secret_access_key: "$AWS_S3_SECRET_ACCESS_KEY"
+        - secret_access_key: "$AWS_S3_SECRET_KEY"
         - upload_bucket: "$AWS_S3_BUCKET"
         - upload_local_path: "$IOS_SCREENSHOTS_DIR"
         - aws_region: "$AWS_S3_REGION"
         - acl_control: public-read
-    - script@1.1.3:
+    - script@1.1.3: &setup_real_api
         title: Copy real api
         inputs:
         - content: |-
@@ -65,12 +65,12 @@ workflows:
     - fastlane@2.3.9:
         inputs:
         - lane: ios beta
-    - deploy-to-bitrise-io@1.2.9:
+    - deploy-to-bitrise-io@1.2.9: &deploy
         is_always_run: false
         inputs:
         - deploy_path: "$IOS_BUILD_DIR"
         - is_compress: 'true'
-    - slack@2.3.0:
+    - slack@2.3.0: &report_on_slack
         inputs:
         - webhook_url: "$SLACK_BITRISE_WEBHOOK_URL"
         - channel: "#dev"
