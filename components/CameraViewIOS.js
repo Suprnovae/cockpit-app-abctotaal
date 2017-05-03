@@ -1,6 +1,7 @@
-import React, {
-  Component,
-  StyleSheet,Dimensions,
+import React, { Component } from 'react';
+import {
+  Dimensions,
+  StyleSheet,
   Text,
   TouchableHighlight,
   View

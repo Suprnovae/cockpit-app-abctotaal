@@ -1,7 +1,7 @@
-import React, {
+import React, { Component } from 'react';
+import {
   AppRegistry,
   BackAndroid,
-  Component,
   ToolbarAndroid,
   ListView,
   ScrollView,
@@ -21,8 +21,9 @@ export default class CustomToolbarAndroid extends Component {
           title={this.props.title}
           titleColor ='white'
           style={styles.toolbar}
-          icon={require('image!toolbar_icon')}
-          navIcon={require('image!toolbar_icon')}
+          icon={source={'uri':'toolbar_icon'}}
+          navIcon={source={'uri':'toolbar_icon'}}
+          onActionSelected={this.props.onActionSelected}
           actions={this.props.actions} />
 
     );

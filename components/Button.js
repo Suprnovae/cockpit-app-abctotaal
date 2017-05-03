@@ -1,7 +1,7 @@
 'use strict';
-import React, {
+import React, { Component } from 'react';
+import {
   StyleSheet,
-  PropTypes,
   Text,
   TouchableOpacity,
   View
@@ -35,6 +35,9 @@ class Button extends React.Component {
         activeOpacity={this.props.activeOpacity}
         onPress={() => this.onPress()}
         style={[styles.button, this.props.style]}
+        accessibilityLabel={this.props.accessibilityLabel}
+        accessibilityTraits="button"        // iOS
+        accessibilityComponentType="button" // android
       >
         <Text style={textStyle}>{this.props.children}</Text>
       </TouchableOpacity>
@@ -49,12 +52,12 @@ class Button extends React.Component {
 }
 
 Button.propTypes = {
-  onPress: PropTypes.func,
+  onPress: React.PropTypes.func,
   style: View.propTypes.style,
   textStyle: Text.propTypes.style,
-  activeOpacity: PropTypes.number,
-  enabled: PropTypes.bool,
-  children: PropTypes.string
+  activeOpacity: React.PropTypes.number,
+  enabled: React.PropTypes.bool,
+  children: React.PropTypes.string
 };
 
 Button.defaultProps = {

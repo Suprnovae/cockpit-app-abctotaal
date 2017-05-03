@@ -1,20 +1,19 @@
-import React, {
+import React from 'react';
+import {
   BackAndroid,
-  Component,
   ListView,
   ScrollView,
-  Navigator,
   View,
 } from 'react-native';
 
-import CustomToolbarAndroid from './CustomToolbarAndroid';
-import results from '../data/results';
-import SemiGaugeView from './SemiGaugeView';
-import styles from '../styles/Gauge';
+import { connect } from 'react-redux';
 
-// FIX: How do we get access to a store inside the components?
-// Shouldn't use of Provider expose the store to all the components contained
-// within the Provider or does it work differently for connected components?
+import styles from '../styles/Gauge';
+import CustomToolbarAndroid from './CustomToolbarAndroid';
+import LoginViewAndroid from './LoginViewAndroid';
+import SemiGaugeView from './SemiGaugeView';
+import I18n from './../i18n/translations';
+
 const ResultViewAndroid = (props, x, y, z) => {
   let ds = new ListView.DataSource({rowHasChanged: (a, b) => a !== b});
 
@@ -25,20 +24,39 @@ const ResultViewAndroid = (props, x, y, z) => {
     <View style={{flex: 1}}>
       <CustomToolbarAndroid
         style={styles.toolbar}
-        icon={require('image!toolbar_icon')}
-        navIcon={require('image!toolbar_icon')}
-        title='Resultaat'
-        actions={[]}/>
+        icon={source={'uri':'toolbar_icon'}}
+        navIcon={source={'uri':'toolbar_icon'}}
+        title={I18n.t('Overview')}
+        actions={[
+          { title: I18n.t('Profile') }
+        ]}
+        onActionSelected={(i) => {
+          console.log('navigator', props.navigator);
+          props.navigator.push({
+            id: 'login',
+            title: 'Login',
+          });
+          console.log('selected ', i);
+        }}
+        />
       <ScrollView style={styles.list}
         bounces={true}
         indicatorStyle={'white'} >
         <ListView
-          dataSource={ds.cloneWithRows(results.data)}
+          enableEmptySections={true}
+          dataSource={ds.cloneWithRows(props.overview.content)}
           renderRow={renderer}
         />
       </ScrollView>
     </View>
   );
-}
+};
 
-export default ResultViewAndroid;
+let mapStateToProps = function(state) {
+  console.log('state', state);
+  return {
+    overview: state.overview,
+  };
+};
+
+export default connect(mapStateToProps)(ResultViewAndroid);

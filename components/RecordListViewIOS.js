@@ -1,9 +1,9 @@
-import React, {
-  Component,
+import React, { Component } from 'react';
+import {
   ListView,
+  PropTypes,
   ScrollView,
   Text,
-  PropTypes,
 } from 'react-native';
 
 import RecordListItem from './RecordListItem';
