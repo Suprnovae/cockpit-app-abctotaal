@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0800"
+   LastUpgradeVersion = "0830"
    version = "1.3">
    <BuildAction
-      parallelizeBuildables = "YES"
+      parallelizeBuildables = "NO"
       buildImplicitDependencies = "YES">
       <BuildActionEntries>
          <BuildActionEntry
@@ -48,6 +48,20 @@
                ReferencedContainer = "container:WinAdmCockpit.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "NO"
+            buildForArchiving = "NO"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "845B7AEF1EA8054D00AD740E"
+               BuildableName = "WinAdmCockpitUITests.xctest"
+               BlueprintName = "WinAdmCockpitUITests"
+               ReferencedContainer = "container:WinAdmCockpit.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
       </BuildActionEntries>
    </BuildAction>
    <TestAction
@@ -60,19 +74,9 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "00E356ED1AD99517003FC87E"
-               BuildableName = "WinAdmCockpitTests.xctest"
-               BlueprintName = "WinAdmCockpitTests"
-               ReferencedContainer = "container:WinAdmCockpit.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "63FF3D141DA7F8AD00B44E3C"
-               BuildableName = "WinAdmCockpitUISnapshotTests.xctest"
-               BlueprintName = "WinAdmCockpitUISnapshotTests"
+               BlueprintIdentifier = "845B7AEF1EA8054D00AD740E"
+               BuildableName = "WinAdmCockpitUITests.xctest"
+               BlueprintName = "WinAdmCockpitUITests"
                ReferencedContainer = "container:WinAdmCockpit.xcodeproj">
             </BuildableReference>
          </TestableReference>

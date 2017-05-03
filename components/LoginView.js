@@ -71,6 +71,7 @@ export default class LoginView extends React.Component {
       <View>
         <View style={styles.inputContainer}>
           <TextInput
+            testID="test-id-email-field"
             ref={ref => { this.state.refs.handle = ref }}
             placeholder={I18n.t('Email')}
             placeholderTextColor="rgba(255,255,255,0.75)"
@@ -88,6 +89,7 @@ export default class LoginView extends React.Component {
         </View>
         <View style={styles.inputContainer} onResponderMove={i => console.log('parent', i)}>
           <TextInput
+            testID="test-id-password-field"
             ref={ref => { this.state.refs.secret = ref }}
             placeholder={I18n.t('Password')}
             placeholderTextColor="rgba(255,255,255,0.75)"
@@ -106,6 +108,7 @@ export default class LoginView extends React.Component {
         </View>
         <View style={styles.loginButtonContainer}>
           <Button
+            testID="test-id-login-button"
             accessibilityLabel={I18n.t('Login')}
             onPress={this.login}
             textStyle={{fontSize: 14}}

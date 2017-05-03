@@ -1,5 +1,5 @@
 ---
-format_version: 1.3.1
+format_version: 1.2.0
 default_step_lib_source: https://github.com/bitrise-io/bitrise-steplib.git
 trigger_map:
 - push_branch: "*ios*"
@@ -10,51 +10,47 @@ trigger_map:
 workflows:
   beta:
     steps:
-    - activate-ssh-key@3.1.1:
+    - activate-ssh-key@3.1.1: # setup SSH private key to pickup rep
         run_if: '{{getenv "SSH_RSA_PRIVATE_KEY" | ne ""}}'
-    - git-clone@3.4.2: {}
-    - yarn@0.0.4:
-        title: install dependencies
+    - git-clone@3.4.2: {} # clone git rep
+    - script@1.1.3: # just run npm install and npm install flow-bin -g
+        title: Install dependencies from package.json
         inputs:
-        - command: install
-        - args: ''
-    - yarn@0.0.4:
-        title: install flow-bin
-        inputs:
-        - command: global add flow-bin
-        - args: ''
+        - content: |-
+            #!/bin/bash
+            npm install && npm install flow-bin -g
     - install-react-native@0.9.1: {}
-    - script@1.1.3:
-        title: Link react-native
-        inputs:
-        - content: react-native link
-    - script@1.1.3:
-        title: Prep test assets
-        inputs:
-        - content: |-
-            #!/bin/bash
-            make clean-api && make test
-        - is_debug: 'yes'
-    - react-native-bundle@1.0.3: {}
-    - fastlane@2.3.9:
-        title: "Screenshots \U0001F4F8"
-        inputs:
-        - lane: ios screenshot
-    - script@1.1.3:
-        title: "Zip screenshots \U0001F4F8"
-        inputs:
-        - content: |-
-            #!/bin/bash
-            zip -r $BITRISE_DEPLOY_DIR/ios.screenshots.zip $IOS_SCREENSHOTS_DIR
-    - amazon-s3-upload@3.1.3:
-        inputs:
-        - access_key_id: "$AWS_S3_ACCESS_KEY"
-        - secret_access_key: "$AWS_S3_SECRET_ACCESS_KEY"
-        - upload_bucket: "$AWS_S3_BUCKET"
-        - upload_local_path: "$IOS_SCREENSHOTS_DIR"
-        - aws_region: "$AWS_S3_REGION"
-        - acl_control: public-read
-    - script@1.1.3:
+# The following part is commented out because I basically copy a test API backend
+# into the application to just run tests against a mock API in order to control the screencapture
+# process. Somehow capturing screenshots is causing some trouble so I've commented this section
+# out, but the objective is to get this section functional.
+#    - script@1.1.3:
+#        title: Prep test assets
+#        inputs:
+#        - content: |-
+#            #!/bin/bash
+#            make clean-api && make test
+#        - is_debug: 'yes'
+#    - react-native-bundle@1.0.3: {}
+#    - fastlane@2.3.9:
+#        title: "Screenshots \U0001F4F8"
+#        inputs:
+#        - lane: ios screenshot
+#    - script@1.1.3:
+#        title: "Zip screenshots \U0001F4F8"
+#        inputs:
+#        - content: |-
+#            #!/bin/bash
+#            zip -r $IOS_BUILD_DIR/screenshots.zip screenshots
+#    - amazon-s3-upload@3.1.3:
+#        inputs:
+#        - access_key_id: "$AWS_S3_ACCESS_KEY"
+#        - secret_access_key: "$AWS_S3_SECRET_ACCESS_KEY"
+#        - upload_bucket: "$AWS_S3_BUCKET"
+#        - upload_local_path: "$IOS_BUILD_DIR/screenshots"
+#        - acl_control: public-read
+#        - aws_region: eu-central-1
+    - script@1.1.3: # install the real API for the release-able build
         title: Copy real api
         inputs:
         - content: |-
@@ -66,10 +62,16 @@ workflows:
         inputs:
         - lane: ios beta
     - deploy-to-bitrise-io@1.2.9:
-        is_always_run: false
         inputs:
         - deploy_path: "$IOS_BUILD_DIR"
         - is_compress: 'true'
+    - script@1.1.3:
+        title: Zip everything
+        is_always_run: true
+        inputs:
+        - content: |-
+            #!/bin/bash
+            zip -r $IOS_BUILD_DIR $BITRISE_DEPLOY_DIR/artifacts.zip
     - slack@2.3.0:
         inputs:
         - webhook_url: "$SLACK_BITRISE_WEBHOOK_URL"
@@ -101,6 +103,3 @@ app:
   - opts:
       is_expand: true
     FASTLANE_EXPLICIT_OPEN_SIMULATOR: 1
-  - opts:
-      is_expand: true
-    IOS_SCREENSHOTS_DIR: "$BITRISE_SOURCE_DIR/ios/screens"

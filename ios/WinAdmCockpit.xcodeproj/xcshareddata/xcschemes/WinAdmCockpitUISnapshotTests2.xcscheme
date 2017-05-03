@@ -9,42 +9,14 @@
          <BuildActionEntry
             buildForTesting = "YES"
             buildForRunning = "YES"
-            buildForProfiling = "YES"
-            buildForArchiving = "YES"
-            buildForAnalyzing = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "2D2A28121D9B038B00D4039D"
-               BuildableName = "libReact.a"
-               BlueprintName = "React-tvOS"
-               ReferencedContainer = "container:../node_modules/react-native/React/React.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "YES"
-            buildForProfiling = "YES"
-            buildForArchiving = "YES"
-            buildForAnalyzing = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "2D02E47A1E0B4A5D006451C7"
-               BuildableName = "WinAdmCockpit-tvOS.app"
-               BlueprintName = "WinAdmCockpit-tvOS"
-               ReferencedContainer = "container:WinAdmCockpit.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "YES"
             buildForProfiling = "NO"
             buildForArchiving = "NO"
-            buildForAnalyzing = "YES">
+            buildForAnalyzing = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "2D02E48F1E0B4A5D006451C7"
-               BuildableName = "WinAdmCockpit-tvOSTests.xctest"
-               BlueprintName = "WinAdmCockpit-tvOSTests"
+               BlueprintIdentifier = "845B7AEF1EA8054D00AD740E"
+               BuildableName = "WinAdmCockpitUITests.xctest"
+               BlueprintName = "WinAdmCockpitUITests"
                ReferencedContainer = "container:WinAdmCockpit.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -60,22 +32,13 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "2D02E48F1E0B4A5D006451C7"
-               BuildableName = "WinAdmCockpit-tvOSTests.xctest"
-               BlueprintName = "WinAdmCockpit-tvOSTests"
+               BlueprintIdentifier = "845B7AEF1EA8054D00AD740E"
+               BuildableName = "WinAdmCockpitUITests.xctest"
+               BlueprintName = "WinAdmCockpitUITests"
                ReferencedContainer = "container:WinAdmCockpit.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
-      <MacroExpansion>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "2D02E47A1E0B4A5D006451C7"
-            BuildableName = "WinAdmCockpit-tvOS.app"
-            BlueprintName = "WinAdmCockpit-tvOS"
-            ReferencedContainer = "container:WinAdmCockpit.xcodeproj">
-         </BuildableReference>
-      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </TestAction>
@@ -89,16 +52,15 @@
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
       allowLocationSimulation = "YES">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
+      <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "2D02E47A1E0B4A5D006451C7"
-            BuildableName = "WinAdmCockpit-tvOS.app"
-            BlueprintName = "WinAdmCockpit-tvOS"
+            BlueprintIdentifier = "845B7AEF1EA8054D00AD740E"
+            BuildableName = "WinAdmCockpitUITests.xctest"
+            BlueprintName = "WinAdmCockpitUITests"
             ReferencedContainer = "container:WinAdmCockpit.xcodeproj">
          </BuildableReference>
-      </BuildableProductRunnable>
+      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </LaunchAction>
@@ -108,16 +70,15 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
+      <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "2D02E47A1E0B4A5D006451C7"
-            BuildableName = "WinAdmCockpit-tvOS.app"
-            BlueprintName = "WinAdmCockpit-tvOS"
+            BlueprintIdentifier = "845B7AEF1EA8054D00AD740E"
+            BuildableName = "WinAdmCockpitUITests.xctest"
+            BlueprintName = "WinAdmCockpitUITests"
             ReferencedContainer = "container:WinAdmCockpit.xcodeproj">
          </BuildableReference>
-      </BuildableProductRunnable>
+      </MacroExpansion>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">
