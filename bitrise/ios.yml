@@ -2,11 +2,10 @@
 format_version: 1.3.1
 default_step_lib_source: https://github.com/bitrise-io/bitrise-steplib.git
 trigger_map:
-#- push_branch: "*ios*"
-#  workflow: beta
-- pull_request_source_branch: "*"
-  pull_request_target_branch: dev
-  workflow: pr-build
+- tag: "v*"
+  workflow: release
+- push_branch: "*/*"
+  workflow: build-binary
 workflows:
   release:
     steps:
@@ -84,30 +83,7 @@ workflows:
         - emoji_on_error: ''
         - icon_url: https://bitrise-public-content-production.s3.amazonaws.com/slack/bitrise-slack-icon-128.png
         - icon_url_on_error: https://bitrise-public-content-production.s3.amazonaws.com/slack/bitrise-slack-error-icon-128.png
-  pr-build:
-    steps:
-    - activate-ssh-key@3.1.1:
-        run_if: '{{getenv "SSH_RSA_PRIVATE_KEY" | ne ""}}'
-    - git-clone@3.4.2: {}
-    - yarn@0.0.4:
-        <<: *dependencies
-    - yarn@0.0.4:
-        <<: *flow_bin
-    - install-react-native@0.9.1: {}
-    - script@1.1.3:
-        <<: *link
-    - script@1.1.3:
-        <<: *setup_real_api
-    - react-native-bundle@1.0.3: {}
-    - certificate-and-profile-installer@1.8.4: {}
-    - fastlane@2.3.9:
-        inputs:
-        - lane: ios beta
-    - deploy-to-bitrise-io@1.2.9:
-        <<: *deploy
-    - slack@2.3.0:
-        <<: *report_on_slack
-  beta:
+  test-and-screenshot:
     steps:
     - activate-ssh-key@3.1.1:
         run_if: '{{getenv "SSH_RSA_PRIVATE_KEY" | ne ""}}'
@@ -126,10 +102,26 @@ workflows:
         <<: *screenshot
     - script@1.1.3:
         <<: *zip_screenshots
+    - deploy-to-bitrise-io@1.2.9:
+        <<: *deploy
+    - slack@2.3.0:
+        <<: *report_on_slack
+  build-binary:
+    steps:
+    - activate-ssh-key@3.1.1:
+        run_if: '{{getenv "SSH_RSA_PRIVATE_KEY" | ne ""}}'
+    - git-clone@3.4.2: {}
+    - yarn@0.0.4:
+        <<: *dependencies
+    - yarn@0.0.4:
+        <<: *flow_bin
+    - install-react-native@0.9.1: {}
+    - script@1.1.3:
+        <<: *link
+    - script@1.1.3:
     - script@1.1.3:
         <<: *setup_real_api
     - react-native-bundle@1.0.3: {}
-    - certificate-and-profile-installer@1.8.4: {}
     - fastlane@2.3.9:
         inputs:
         - lane: ios beta
@@ -157,6 +149,9 @@ app:
   - opts:
       is_expand: false
     FASTLANE_EXPLICIT_OPEN_SIMULATOR: 1
+  - opts:
+      is_expand: false
+    FASTLANE_CERT_REPOSITORY: git@github.com:Suprnovae/suprnovae-fastlane-certs.git
   - opts:
       is_expand: false
     FASTLANE_DEFAULT_TYPE: development
