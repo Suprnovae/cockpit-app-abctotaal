@@ -47,6 +47,7 @@ platform :ios do
 
     match(
       git_branch: "cockpit/abctotaal",
+      readonly: true,
     )
 
     gym(
