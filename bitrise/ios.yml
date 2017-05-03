@@ -66,10 +66,10 @@ workflows:
         inputs:
         - lane: ios beta
     - deploy-to-bitrise-io@1.2.9: &deploy
-        is_always_run: false
+        is_always_run: true
         inputs:
-        - deploy_path: "$IOS_BUILD_DIR"
-        - is_compress: 'true'
+        - deploy_path: "$BITRISE_DEPLOY_DIR" #"$IOS_BUILD_DIR"
+        - is_compress: false
     - slack@2.3.0: &report_on_slack
         inputs:
         - webhook_url: "$SLACK_BITRISE_WEBHOOK_URL"
