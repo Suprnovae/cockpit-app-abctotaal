@@ -12,23 +12,24 @@ import {
 import I18n from '../i18n/translations';
 
 import styles from '../styles/LoginForm';
-import { authenticate } from '.././actions';
+import { authenticate,requestReport } from '.././actions';
 
 import { connect } from 'react-redux';
 import Button from './Button';
+import ResultViewIOS from "./ResultViewIOS";
 
 export const mapStateToProps = function(state) {
   console.log("state is", state);
   return {
     handle: state.credentials ? state.credentials.handle : undefined,
     secret: state.credentials ? state.credentials.secret : undefined,
-  }
+  };
 };
 
 export const mapDispatchToProps = function(dispatch) {
   return {
     authenticate: (h, s) => dispatch(authenticate(h, s))
-  }
+  };
 };
 
 export default class LoginView extends React.Component {
@@ -38,12 +39,12 @@ export default class LoginView extends React.Component {
       email: undefined,
       password: undefined,
       refs: {}
-    }
+    };
     console.log('this.state', this.state);
 
     // binding to this
     // https://facebook.github.io/react/docs/reusable-components.html#autobinding
-    this.login = this.login.bind(this)
+    this.login = this.login.bind(this);
   }
 
   login() {
@@ -52,6 +53,9 @@ export default class LoginView extends React.Component {
     let pass = () => {
       console.log('passing on for', email);
       this.props.navigator.pop();
+      this.props.navigator.push({
+        component: ResultViewIOS
+      });
     };
 
     let fail = (e) => {

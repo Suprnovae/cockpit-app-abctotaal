@@ -39,33 +39,19 @@ class WinAdmCockpit extends Component {
     super(props);
     this.state = {
       refs: {}
-    }
-
-    this.account = this.account.bind(this)
+    };
   }
 
-  account() {
-    console.log('goto account', this.state.refs.nav);
-    this.state.refs.nav.push({
-      title: "Login",
-      component: LoginViewIOS,
-    });
-  }
 
   render() {
     return (
       <Provider store={store}>
         <NavigatorIOS
-          ref={ref => { this.state.refs.nav = ref }}
+          ref={ref => { this.state.refs.nav = ref; }}
           style={styles.container}
           initialRoute={{
-            component: ResultViewIOS,
-            title: I18n.t('Overview'),
-            //leftButtonIcon: require('image!NavBarButtonIcon'),
-            rightButtonIcon: nativeImageSource({ ios: 'NavBarButtonAccount'}),
-            rightButtonTitle: I18n.t('Account'),
-            onLeftButtonPress: () => {console.log('pressed');},
-            onRightButtonPress: this.account
+            component: LoginViewIOS,
+            title: I18n.t('Login'),
           }}
           itemWrapperStyle={styles.ItemWrapper}
           tintColor={colors.tint}
