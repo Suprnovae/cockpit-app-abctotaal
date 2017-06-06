@@ -64,3 +64,27 @@ Build an apk by assembling a release and possibly installing it on a emulated/vi
     ./gradlew assembleRelease
 
     ./gradlew installRelease
+
+## Notes
+
+Fastlane expects several environment variables to work:
+
+```bash
+FASTLANE_CERT_REPOSITORY=git@github.com:OWNER/REP.git
+FASTLANE_DEFAULT_TYPE=development
+
+IOS_APP_ID=com.example.app
+IOS_APPLE_USERNAME=apple_user@example.com
+IOS_APPLE_TEAM_ID=XXXXXXXXXX
+```
+
+> **NOTE:** Fastlane does not automatically load dotenvs prior to running its
+logic. Hence the explicit export of all env vars.
+
+Just to be sure load all env vars into env
+
+```bash
+for i in $(cat .env); export $i
+```
+
+From this point on `fastlane` commands can be safely used.

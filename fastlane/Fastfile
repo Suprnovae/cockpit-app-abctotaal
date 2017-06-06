@@ -11,22 +11,29 @@
 
 # This is the minimum version number required.
 # Update this, if you use features of a newer version
-fastlane_version "2.27.0"
+fastlane_version "2.28.7"
 
 default_platform :ios
 
 platform :ios do
   before_all do
     # ENV["SLACK_URL"] = "https://hooks.slack.com/services/..."
-    
-    
+    puts "Creating keychain #{ENV['MATCH_KEYCHAIN_NAME']}"
+    create_keychain(
+      name: ENV['MATCH_KEYCHAIN_NAME'],
+      default_keychain: true,
+      unlock: true,
+      timeout: 3600,
+      lock_when_sleeps: true,
+      password: ENV['MATCH_KEYCHAIN_PASSWORD'],
+    )
   end
 
   desc "Runs all the tests"
   lane :test do
     scan(
-      project: 'ios/WinAdmCockpit.xcodeproj',
-      scheme: 'WinAdmCockpit'
+      project: ENV['IOS_PROJECT_PATH'],
+      scheme: ENV['IOS_SCHEME']
     )
   end
 
@@ -35,39 +42,36 @@ platform :ios do
   lane :beta do
     # match(type: "appstore") # more information: https://codesigning.guide
     update_app_identifier(
-      xcodeproj: 'ios/WinAdmCockpit.xcodeproj',
-      plist_path: 'WinAdmCockpit/Info.plist',
-      app_identifier: 'com.suprnovae.cockpit.abctotaal'
+      xcodeproj: ENV['IOS_PROJECT_PATH'],
+      plist_path: ENV['IOS_PLIST_PATH'],
+      app_identifier: ENV['IOS_APP_ID']
     )
 
     increment_version_number(
-      xcodeproj: 'ios/WinAdmCockpit.xcodeproj',
+      xcodeproj: ENV['IOS_PROJECT_PATH'],
       version_number: File.open(
         "#{ENV['BITRISE_SOURCE_DIR']}/VERSION/iOS", 'r'
       ).read.strip
     )
 
-    cert(
-      team_id: ENV['IOS_APPLE_TEAM_ID'],
-      username: ENV['IOS_APPLE_USERNAME']
-    )
-
-    sigh(
-      team_id: ENV['IOS_APPLE_TEAM_ID'],
-      username: ENV['IOS_APPLE_USERNAME']
+    match(
+      #git_branch: "cockpit/abctotaal",
+      type: 'appstore',
+      readonly: true,
     )
 
     gym(
-      project: 'ios/WinAdmCockpit.xcodeproj',
-      configuration: 'Release',
-      scheme: 'WinAdmCockpit',
-      codesigning_identity: ENV['IOS_CODESIGNING_ID'],
+      buildlog_path: ENV['IOS_BUILD_DIR'],
       clean: true,
-      output_name: 'debug.ipa',
+      codesigning_identity: ENV['IOS_CODESIGNING_ID'],
+      configuration: 'Release',
+      include_bitcode: true,
+      include_symbols: true,
       output_directory: ENV['IOS_BUILD_DIR'],
-      buildlog_path: ENV['IOS_BUILD_DIR']
+      output_name: 'debug.ipa',
+      project: ENV['IOS_PROJECT_PATH'],
+      scheme: ENV['IOS_SCHEME'],
     ) # Build your app - more options available
-    #pilot
 
     # sh "your_script.sh"
     # You can also use other beta testing services here (run `fastlane actions`)
@@ -92,13 +96,13 @@ platform :ios do
     # match(type: "appstore")
     # snapshot
     update_app_identifier(
-      app_identifier: 'com.suprnovae.cockpit.abctotaal'
+      app_identifier: ENV['IOS_APP_ID']
     )
 
     gym(
-      project: 'ios/WinAdmCockpit.xcodeproj',
+      project: ENV['IOS_PROJECT_PATH'],
       configuration: 'Release',
-      scheme: 'WinAdmCockpit',
+      scheme: ENV['IOS_SCHEME'],
       codesigning_identity: ENV['IOS_CODESIGNING_ID'],
       clean: true,
       output_name: 'release.ipa',

@@ -2,33 +2,32 @@
 format_version: 1.3.1
 default_step_lib_source: https://github.com/bitrise-io/bitrise-steplib.git
 trigger_map:
-- push_branch: "*ios*"
-  workflow: beta
-- pull_request_source_branch: "*"
-  workflow: beta
-  pull_request_target_branch: dev
+- tag: "v*"
+  workflow: release
+- push_branch: "*/*"
+  workflow: build-binary
 workflows:
-  beta:
+  release:
     steps:
     - activate-ssh-key@3.1.1:
         run_if: '{{getenv "SSH_RSA_PRIVATE_KEY" | ne ""}}'
     - git-clone@3.4.2: {}
-    - yarn@0.0.4:
+    - yarn@0.0.4: &dependencies
         title: install dependencies
         inputs:
         - command: install
         - args: ''
-    - yarn@0.0.4:
+    - yarn@0.0.4: &flow_bin
         title: install flow-bin
         inputs:
         - command: global add flow-bin
         - args: ''
     - install-react-native@0.9.1: {}
-    - script@1.1.3:
+    - script@1.1.3: &link
         title: Link react-native
         inputs:
         - content: react-native link
-    - script@1.1.3:
+    - script@1.1.3: &setup_mock_api
         title: Prep test assets
         inputs:
         - content: |-
@@ -36,41 +35,41 @@ workflows:
             make clean-api && make test
         - is_debug: 'yes'
     - react-native-bundle@1.0.3: {}
-    - fastlane@2.3.9:
+    - fastlane@2.3.9: &screenshot
         title: "Screenshots \U0001F4F8"
         inputs:
         - lane: ios screenshot
-    - script@1.1.3:
+    - script@1.1.3: &zip_screenshots
         title: "Zip screenshots \U0001F4F8"
         inputs:
         - content: |-
             #!/bin/bash
             zip -r $BITRISE_DEPLOY_DIR/ios.screenshots.zip $IOS_SCREENSHOTS_DIR
-    - amazon-s3-upload@3.1.3:
+    - amazon-s3-upload@3.1.3: &s3_upload
         inputs:
         - access_key_id: "$AWS_S3_ACCESS_KEY"
-        - secret_access_key: "$AWS_S3_SECRET_ACCESS_KEY"
+        - secret_access_key: "$AWS_S3_SECRET_KEY"
         - upload_bucket: "$AWS_S3_BUCKET"
         - upload_local_path: "$IOS_SCREENSHOTS_DIR"
         - aws_region: "$AWS_S3_REGION"
         - acl_control: public-read
-    - script@1.1.3:
+    - script@1.1.3: &setup_real_api
         title: Copy real api
         inputs:
         - content: |-
             #!/bin/bash
             make clean-api && make production
     - react-native-bundle@1.0.3: {}
-    - certificate-and-profile-installer@1.8.4: {}
+#    - certificate-and-profile-installer@1.8.4: {}
     - fastlane@2.3.9:
         inputs:
         - lane: ios beta
-    - deploy-to-bitrise-io@1.2.9:
-        is_always_run: false
+    - deploy-to-bitrise-io@1.2.9: &deploy
+        is_always_run: true
         inputs:
-        - deploy_path: "$IOS_BUILD_DIR"
-        - is_compress: 'true'
-    - slack@2.3.0:
+        - deploy_path: "$BITRISE_DEPLOY_DIR" #"$IOS_BUILD_DIR"
+        - is_compress: false
+    - slack@2.3.0: &report_on_slack
         inputs:
         - webhook_url: "$SLACK_BITRISE_WEBHOOK_URL"
         - channel: "#dev"
@@ -84,14 +83,63 @@ workflows:
         - emoji_on_error: ''
         - icon_url: https://bitrise-public-content-production.s3.amazonaws.com/slack/bitrise-slack-icon-128.png
         - icon_url_on_error: https://bitrise-public-content-production.s3.amazonaws.com/slack/bitrise-slack-error-icon-128.png
+  test-and-screenshot:
+    steps:
+    - activate-ssh-key@3.1.1:
+        run_if: '{{getenv "SSH_RSA_PRIVATE_KEY" | ne ""}}'
+    - git-clone@3.4.2: {}
+    - yarn@0.0.4:
+        <<: *dependencies
+    - yarn@0.0.4:
+        <<: *flow_bin
+    - install-react-native@0.9.1: {}
+    - script@1.1.3:
+        <<: *link
+    - script@1.1.3:
+        <<: *setup_mock_api
+    - react-native-bundle@1.0.3: {}
+    - fastlane@2.3.9:
+        <<: *screenshot
+    - script@1.1.3:
+        <<: *zip_screenshots
+    - deploy-to-bitrise-io@1.2.9:
+        <<: *deploy
+    - slack@2.3.0:
+        <<: *report_on_slack
+  build-binary:
+    steps:
+    - activate-ssh-key@3.1.1:
+        run_if: '{{getenv "SSH_RSA_PRIVATE_KEY" | ne ""}}'
+    - git-clone@3.4.2: {}
+    - yarn@0.0.4:
+        <<: *dependencies
+    - yarn@0.0.4:
+        <<: *flow_bin
+    - install-react-native@0.9.1: {}
+    - script@1.1.3:
+        <<: *link
+    - script@1.1.3:
+    - script@1.1.3:
+        <<: *setup_real_api
+    - react-native-bundle@1.0.3: {}
+    - fastlane@2.3.9:
+        inputs:
+        - lane: ios beta
+    - deploy-to-bitrise-io@1.2.9:
+        <<: *deploy
+    - slack@2.3.0:
+        <<: *report_on_slack
 app:
   envs:
   - opts:
       is_expand: false
-    BITRISE_PROJECT_PATH: ios/WinAdmCockpit.xcodeproj
+    IOS_PROJECT_PATH: ios/WinAdmCockpit.xcodeproj
   - opts:
       is_expand: false
-    BITRISE_SCHEME: WinAdmCockpit
+    IOS_SCHEME: WinAdmCockpit
+  - opts:
+      is_expand: false
+    IOS_PLIST_PATH: WinAdmCockpit/Info.plist
   - opts:
       is_expand: true
     SLACK_BITRISE_WEBHOOK_URL: "$SLACK_URL"
@@ -99,8 +147,14 @@ app:
       is_expand: true
     IOS_BUILD_DIR: "$BITRISE_SOURCE_DIR/ios/build"
   - opts:
-      is_expand: true
+      is_expand: false
     FASTLANE_EXPLICIT_OPEN_SIMULATOR: 1
+  - opts:
+      is_expand: false
+    FASTLANE_CERT_REPOSITORY: git@github.com:Suprnovae/suprnovae-fastlane-certs.git
+  - opts:
+      is_expand: false
+    FASTLANE_DEFAULT_TYPE: development
   - opts:
       is_expand: true
     IOS_SCREENSHOTS_DIR: "$BITRISE_SOURCE_DIR/ios/screens"
