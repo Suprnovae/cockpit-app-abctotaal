@@ -46,8 +46,8 @@ platform :ios do
     )
 
     match(
-      git_branch: "cockpit/abctotaal",
-      type: 'development',
+      #git_branch: "cockpit/abctotaal",
+      type: 'appstore',
       readonly: true,
     )
 
