@@ -52,16 +52,17 @@ platform :ios do
     )
 
     gym(
-      project: ENV['IOS_PROJECT_PATH'],
-      configuration: 'Release',
-      scheme: ENV['IOS_SCHEME'],
-      codesigning_identity: ENV['IOS_CODESIGNING_ID'],
+      buildlog_path: ENV['IOS_BUILD_DIR'],
       clean: true,
-      output_name: 'debug.ipa',
+      codesigning_identity: ENV['IOS_CODESIGNING_ID'],
+      configuration: 'Release',
+      include_bitcode: true,
+      include_symbols: true,
       output_directory: ENV['IOS_BUILD_DIR'],
-      buildlog_path: ENV['IOS_BUILD_DIR']
+      output_name: 'debug.ipa',
+      project: ENV['IOS_PROJECT_PATH'],
+      scheme: ENV['IOS_SCHEME'],
     ) # Build your app - more options available
-    #pilot
 
     # sh "your_script.sh"
     # You can also use other beta testing services here (run `fastlane actions`)
