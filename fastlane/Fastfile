@@ -18,6 +18,15 @@ default_platform :ios
 platform :ios do
   before_all do
     # ENV["SLACK_URL"] = "https://hooks.slack.com/services/..."
+    puts "Creating keychain #{ENV['MATCH_KEYCHAIN_NAME']}"
+    create_keychain(
+      name: ENV['MATCH_KEYCHAIN_NAME'],
+      default_keychain: true,
+      unlock: true,
+      timeout: 3600,
+      lock_when_sleeps: true,
+      password: ENV['MATCH_KEYCHAIN_PASSWORD'],
+    )
   end
 
   desc "Runs all the tests"
